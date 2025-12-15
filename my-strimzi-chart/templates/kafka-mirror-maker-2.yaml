@@ -1,0 +1,38 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaMirrorMaker2
+metadata:
+  name: {{ .Values.mirrormaker2.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  version: {{ .Values.mirrormaker2.version }}
+  replicas: {{ .Values.mirrormaker2.replicas }}
+  target:
+    alias: {{ .Values.mirrormaker2.target.alias }}
+    bootstrapServers: {{ .Values.mirrormaker2.target.bootstrapServers }}
+    groupId: {{ .Values.mirrormaker2.target.groupId }} 
+    configStorageTopic: {{ .Values.mirrormaker2.target.configStorageTopic }} 
+    offsetStorageTopic: {{ .Values.mirrormaker2.target.offsetStorageTopic }}
+    statusStorageTopic: {{ .Values.mirrormaker2.target.statusStorageTopic }}
+    config:
+      config.storage.replication.factor: {{ .Values.mirrormaker2.target.config.configStorageReplicationFactor }}
+      offset.storage.replication.factor: {{ .Values.mirrormaker2.target.config.offsetStorageReplicationFactor }}
+      status.storage.replication.factor: {{ .Values.mirrormaker2.target.config.statusStorageReplicationFactor }}
+  mirrors:
+  - source:
+      bootstrapServers: {{ .Values.mirrormaker2.mirrors.source.bootstrapServers }}
+      alias: {{ .Values.mirrormaker2.mirrors.source.alias }}
+    sourceConnector:
+        tasksMax: {{ .Values.mirrormaker2.mirrors.sourceConnector.tasksMax }}
+        config:
+          replication.factor: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.replicationFactor }}
+          offset-syncs.topic.replication.factor: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.offsetSyncsTopicReplicationFactor }}
+          sync.topic.acls.enabled: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.syncTopicAclsEnabled }}
+          refresh.topics.interval.seconds: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.refreshTopicsIntervalSeconds }}
+    checkpointConnector:
+        tasksMax: {{ .Values.mirrormaker2.mirrors.checkpointConnector.tasksMax }}
+        config:
+          checkpoints.topic.replication.factor: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.checkpointsTopicReplicationFactor }}
+          sync.group.offsets.enabled: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.syncGroupOffsetsEnabled }}
+          refresh.groups.interval.seconds: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.refreshGroupsIntervalSeconds }}
+    topicsPattern: {{ .Values.mirrormaker2.mirrors.topicsPattern }}
+    groupsPattern: {{ .Values.mirrormaker2.mirrors.groupsPattern }}

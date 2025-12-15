@@ -1,0 +1,65 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaNodePool
+metadata:
+  name: {{ .Values.kafka.nodepool.controller.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    strimzi.io/cluster: {{ .Values.kafka.cluster }}
+spec:
+  replicas: {{ .Values.kafka.nodepool.controller.replicas }}
+  roles:
+    - {{ .Values.kafka.nodepool.controller.roles }}
+  storage:
+    type: {{ .Values.kafka.nodepool.controller.storage.type }}
+    volumes:
+      - id: {{ .Values.kafka.nodepool.controller.storage.volumes.id }}
+        type: {{ .Values.kafka.nodepool.controller.storage.volumes.type }}
+        kraftMetadata: {{ .Values.kafka.nodepool.controller.storage.volumes.kraftMetadata }}
+---
+
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaNodePool
+metadata:
+  name: {{ .Values.kafka.nodepool.broker.name }}
+  namespace: {{ .Values.kafka.namespace }}
+  labels:
+    strimzi.io/cluster: {{ .Values.kafka.cluster }}
+spec:
+  replicas: {{ .Values.kafka.nodepool.broker.replicas }}
+  roles:
+    - {{ .Values.kafka.nodepool.broker.roles }}
+  storage:
+    type: {{ .Values.kafka.nodepool.broker.storage.type }}
+    volumes:
+      - id: {{ .Values.kafka.nodepool.broker.storage.volumes.id }}
+        type: {{ .Values.kafka.nodepool.broker.storage.volumes.type }}
+        kraftMetadata: {{ .Values.kafka.nodepool.broker.storage.volumes.kraftMetadata }}
+---
+
+apiVersion: kafka.strimzi.io/v1
+kind: Kafka
+metadata:
+  name: {{ .Values.kafka.name }}
+  namespace: {{ .Values.kafka.namespace }}
+spec:
+  kafka:
+    version: {{ .Values.kafka.version }}
+    metadataVersion: {{ .Values.kafka.metadataVersion }}
+    listeners:
+{{- range .Values.kafka.listeners }}
+      - name: {{ .name }}
+        port: {{ .port }}
+        type: {{ .type }}
+        tls: {{ .tls_bool }}
+{{- end }}
+#   config:
+#     offsets.topic.replication.factor: {{ .Values.kafka.config.offsetsReplicationFactor }}
+#     transaction.state.log.replication.factor: {{ .Values.kafka.config.transactionReplicationFactor }}
+#     transaction.state.log.min.isr: {{ .Values.kafka.config.transactionMinISR }}
+#     default.replication.factor: {{ .Values.kafka.config.defaultReplicationFactor }}
+#     min.insync.replicas: {{ .Values.kafka.config.minInSyncReplicas }}
+
+# entityOperator:
+#   topicOperator: {}
+#   userOperator: {}
+

@@ -1,0 +1,16 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: strimzi
+  namespace: flux-system
+  resourceVersion: "426082"
+  uid: dc8cfcf8-5bee-421b-bed0-4afd25531818
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: gitops-deploy
+  timeout: 60s
+  url: ssh://github.com/cmwinterburn-stfc/lsst-drp-strimzi
+

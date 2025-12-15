@@ -1,0 +1,5 @@
+# Ignore kubeconfig and secrets
+~/.kube/
+values-secret.yaml
+*.log
+*.tmp

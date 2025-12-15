@@ -1,0 +1,82 @@
+
+namespace: lsst-drp-kafka
+
+kafka:
+  name: my-cluster
+  cluster: my-cluster
+  version: 4.1.1
+  metadataVersion: 4.1-IV1
+
+  listeners:
+    - name: plain
+      port: 9092
+      type: internal
+      tls_bool: false
+    - name: tls
+      port: 9093
+      type: internal
+      tls_bool: true
+
+  config:
+    offsetsReplicationFactor: 3
+    transactionReplicationFactor: 3
+    transactionMinISR: 2
+    defaultReplicationFactor: 3
+    minInSyncReplicas: 2
+
+  nodepool:
+    controller:
+      name: controller
+      replicas: 3
+      roles: controller
+      storage:
+        type: jbod
+        volumes:
+          id: 0
+          type: ephemeral
+          kraftMetadata: shared
+    broker:
+      name: broker
+      replicas: 3
+      roles: broker
+      storage:
+        type: jbod
+        volumes:
+          id: 0
+          type: ephemeral
+          kraftMetadata: shared
+
+mirrormaker2:
+  name: my-mirror-maker-2
+  version: 4.1.1
+  replicas: 1
+  target: 
+    alias: "RAL"
+    bootstrapServers: my-cluster-kafka-bootstrap.lsst-drp-kafka.svc:9092
+    groupId: mirror-maker-2-target-group
+    configStorageTopic: my-mirror-maker-2-config
+    offsetStorageTopic: my-mirror-maker-2-offset
+    statusStorageTopic: my-mirror-maker-2-status
+    config: 
+      configStorageReplicationFactor: 1
+      offsetStorageReplicationFactor: 1
+      statusStorageReplicationFactor: 1
+  mirrors:
+    source:
+      bootstrapServers: 134.79.23.189:9094
+      alias: "USDF"
+    sourceConnector:
+      tasksMax: 1
+      config:
+        replicationFactor: 1
+        offsetSyncsTopicReplicationFactor: 1
+        syncTopicAclsEnabled: "false"
+        refreshTopicsIntervalSeconds: 600
+    checkpointConnector:
+      tasksMax: 1
+      config:
+        checkpointsTopicReplicationFactor: -1
+        syncGroupOffsetsEnabled: "false"
+        refreshGroupsIntervalSeconds: 600
+    topicsPattern: ".*"
+    groupsPattern: ".*"
