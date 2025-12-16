@@ -4,6 +4,6 @@ metadata:
   name: {{ .Values.bridge.metadata.name }}
 spec:
   replicas: {{ .Values.bridge.spec.replicas }}
-  bootstrapServers: {{ .Values.bridge.bootstrapServers }}
+  bootstrapServers: {{ .Values.bridge.spec.bootstrapServers }}
   http:
-    port: {{ .Values.bridge.port }}
+    port: {{ .Values.bridge.spec.port }}
