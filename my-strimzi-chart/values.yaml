@@ -80,3 +80,11 @@ mirrormaker2:
         refreshGroupsIntervalSeconds: 600
     topicsPattern: ".*"
     groupsPattern: ".*"
+
+bridge:
+  metadata:
+    name: my-bridge
+  spec:
+    replicas: 1
+    bootstrapServers: my-cluster-kafka-bootstrap.lsst-drp-kafka.svc:9092
+    port: 8080

@@ -3,3 +3,4 @@
 values-secret.yaml
 *.log
 *.tmp
+kafka-bridge-0.33.1*
