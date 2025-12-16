@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: gitops-deploy
-  url: ssh://git@github.com/cmwinterburn-stfc/lsst-drp-strimzi
+  url: ssh://git@github.com/cmwinterburn-stfc/lsst-drp-kafka
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
