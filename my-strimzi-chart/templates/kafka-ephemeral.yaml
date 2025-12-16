@@ -35,10 +35,10 @@ spec:
       - id: {{ .Values.kafka.nodepool.broker.storage.volumes.id }}
         type: {{ .Values.kafka.nodepool.broker.storage.volumes.type }}
         kraftMetadata: {{ .Values.kafka.nodepool.broker.storage.volumes.kraftMetadata }}
-    template:
-      pod:
-        annotations:
-          strimzi.io/force-restart: "{{ now.Unix }}"
+  template:
+    pod:
+      annotations:
+        strimzi.io/force-restart: "{{ now.Unix }}"
 ---
 
 apiVersion: kafka.strimzi.io/v1
