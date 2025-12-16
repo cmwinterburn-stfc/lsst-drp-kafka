@@ -37,7 +37,7 @@ kafka:
           kraftMetadata: shared
     broker:
       name: broker
-      replicas: 3
+      replicas: 4
       roles: broker
       storage:
         type: jbod
