@@ -38,7 +38,7 @@ spec:
   template:
     pod:
       annotations:
-        strimzi.io/restart: "{{ now.Unix }}"
+        strimzi.io/restart: {{ .Values.kafka.restartId }}
 ---
 
 apiVersion: kafka.strimzi.io/v1
