@@ -79,7 +79,7 @@ mirrormaker2:
         checkpointsTopicReplicationFactor: -1
         syncGroupOffsetsEnabled: "false"
         refreshGroupsIntervalSeconds: 600
-    topicsPattern: ".*"
+    topicsPattern: "RAL_.*"
     groupsPattern: ".*"
 
 bridge:
