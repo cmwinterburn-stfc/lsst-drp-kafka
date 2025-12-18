@@ -61,8 +61,8 @@ spec:
       type: {{ .Values.kafka.metricsConfig.type }}
       valueFrom:
         configMapKeyRef:
-          name: {{ .Values.kafka.metricsConfig.configMapName }}
-          key: {{ .Values.kafka.metricsConfig.configMapKey }}
+          name: {{ .Values.kafka.metricsConfig.valueFrom.configMapKeyRef.name }}
+          key: {{ .Values.kafka.metricsConfig.valueFrom.configMapKeyRef.key }}
 
 ---
 kind: ConfigMap

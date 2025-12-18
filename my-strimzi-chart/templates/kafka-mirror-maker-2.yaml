@@ -36,6 +36,12 @@ spec:
           refresh.groups.interval.seconds: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.refreshGroupsIntervalSeconds }}
     topicsPattern: {{ .Values.mirrormaker2.mirrors.topicsPattern }}
     groupsPattern: {{ .Values.mirrormaker2.mirrors.groupsPattern }}
+  metricsConfig:
+    type: {{ .Values.mirrormaker2.metricsConfig.type }}
+    valueFrom:
+      configMapKeyRef:
+        name: {{ .Values.mirrormaker2.metricsConfig.valueFrom.configMapKeyRef.name }}
+        key: {{ .Values.mirrormaker2.metricsConfig.valueFrom.configMapKeyRef.key }}
 ---
 kind: ConfigMap
 apiVersion: v1
