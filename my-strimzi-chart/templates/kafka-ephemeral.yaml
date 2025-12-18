@@ -72,7 +72,7 @@ metadata:
   labels:
     app: {{ .Values.kafkaConfigMap.labels.app }}
 data:
-  kafka-metrics-config.yml: {{ .Values.kafkaConfigMap.data.kafka-metricsConfig.yml }}
+  kafka-metrics-config.yml: {{ .Values.kafkaConfigMap.data.kafkaMetricsConfig.yml }}
 
 #   config:
 #     offsets.topic.replication.factor: {{ .Values.kafka.config.offsetsReplicationFactor }}
