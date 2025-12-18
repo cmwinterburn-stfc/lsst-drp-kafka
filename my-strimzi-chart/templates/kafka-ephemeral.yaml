@@ -57,6 +57,23 @@ spec:
         type: {{ .type }}
         tls: {{ .tls_bool }}
 {{- end }}
+    metricsConfig:
+      type: {{ .Values.kafka.metricsConfig.type }}
+      valueFrom:
+        configMapKeyRef:
+          name: {{ .Values.kafka.metricsConfig.configMapName }}
+          key: {{ .Values.kafka.metricsConfig.configMapKey }}
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ .Values.kafkaConfigMap.name }}
+  labels:
+    app: {{ .Values.kafkaConfigMap.labels.app }}
+data:
+  kafka-metrics-config.yml: {{ .Values.kafkaConfigMap.data.kafka-metrics-config.yml }}
+
 #   config:
 #     offsets.topic.replication.factor: {{ .Values.kafka.config.offsetsReplicationFactor }}
 #     transaction.state.log.replication.factor: {{ .Values.kafka.config.transactionReplicationFactor }}
