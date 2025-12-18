@@ -89,7 +89,7 @@ mirrormaker2:
     topicsPattern: "RAL_.*"
     groupsPattern: ".*"
   metricsConfig:
-    type: jmxPrometheusExporter
+    type: strimziMetricsReporter
     valueFrom:
       configMapKeyRef:
         name: mirror-maker-2-metrics

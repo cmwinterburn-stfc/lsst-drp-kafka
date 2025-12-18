@@ -38,10 +38,6 @@ spec:
     groupsPattern: {{ .Values.mirrormaker2.mirrors.groupsPattern }}
   metricsConfig:
     type: {{ .Values.mirrormaker2.metricsConfig.type }}
-    valueFrom:
-      configMapKeyRef:
-        name: {{ .Values.mirrormaker2.metricsConfig.valueFrom.configMapKeyRef.name }}
-        key: {{ .Values.mirrormaker2.metricsConfig.valueFrom.configMapKeyRef.key }}
 ---
 kind: ConfigMap
 apiVersion: v1
