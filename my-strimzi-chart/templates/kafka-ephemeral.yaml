@@ -58,11 +58,7 @@ spec:
         tls: {{ .tls_bool }}
 {{- end }}
     metricsConfig:
-      type: {{ .Values.kafka.metricsConfig.type }}
-      valueFrom:
-        configMapKeyRef:
-          name: {{ .Values.kafka.metricsConfig.valueFrom.configMapKeyRef.name }}
-          key: {{ .Values.kafka.metricsConfig.valueFrom.configMapKeyRef.key }}
+      type: strimziMetricsReporter
 
 ---
 kind: ConfigMap
