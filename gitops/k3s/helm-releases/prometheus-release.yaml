@@ -8,8 +8,8 @@ spec:
   targetNamespace: lsst-drp-kafka
   chart:
     spec:
-      chart: prometheus
-      version: "27.0"
+      chart: kube-prometheus-stack
+      version: "80.0"
       sourceRef:
         kind: HelmRepository
         name: prometheus-source
