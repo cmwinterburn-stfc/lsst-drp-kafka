@@ -43,5 +43,3 @@ metadata:
   name: {{.Values.mirrorMaker2ConfigMap.name}}
   labels:
     app: {{ .Values.mirrorMaker2ConfigMap.labels.app }}
-data:
-  metrics-config.yml: {{ .Values.mirrorMaker2ConfigMap.data.MM2MetricsConfig }}
