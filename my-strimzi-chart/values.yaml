@@ -108,7 +108,7 @@ kafkaConfigMap:
   labels:
     app: strimzi
   data:
-    kafka-metricsConfig.yml: |
+    kafka-metricsConfig: |
       # See https://github.com/prometheus/jmx_exporter for more info about JMX Prometheus Exporter metrics
       lowercaseOutputName: true
       rules:
@@ -276,7 +276,7 @@ mirrorMaker2ConfigMap:
   labels:
     app: strimzi
   data:
-    MM2MetricsConfig.yml: |
+    MM2MetricsConfig: |
       #kafka.connect:type=connector-task-metrics,connector="{connector}",task="{task}<> status"
       - pattern: 'kafka.connect<type=connector-task-metrics, connector=(.+), task=(.+)><>status: ([a-z-]+)'
         name: kafka_connect_connector_status
