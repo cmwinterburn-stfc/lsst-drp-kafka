@@ -4,8 +4,9 @@ metadata:
   name: prometheus
   namespace: flux-system
 spec:
-  interval: 5m
+  releaseName: prometheus
   targetNamespace: lsst-drp-kafka
+  interval: 5m
   chart:
     spec:
       chart: kube-prometheus-stack
