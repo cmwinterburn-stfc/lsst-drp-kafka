@@ -11,4 +11,4 @@ spec:
     matchLabels:
       strimzi.io/name: my-cluster-kafka
   endpoints:
-  - port: 9404
+  - port: tcp-prometheus
