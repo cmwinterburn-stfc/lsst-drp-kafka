@@ -7,6 +7,7 @@ spec:
   releaseName: nginx
   targetNamespace: lsst-drp-kafka
   interval: 5m
+  timeout: 10m0s
   chart:
     spec:
       chart: nginx-ingress
