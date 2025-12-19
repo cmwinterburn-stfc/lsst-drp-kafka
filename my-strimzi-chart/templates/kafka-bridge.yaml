@@ -2,6 +2,7 @@ apiVersion: kafka.strimzi.io/v1
 kind: KafkaBridge
 metadata:
   name: {{ .Values.bridge.metadata.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.bridge.spec.replicas }}
   bootstrapServers: {{ .Values.bridge.spec.bootstrapServers }}
