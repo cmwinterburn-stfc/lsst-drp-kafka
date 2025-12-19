@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: mirrormaker-pods
+  namespace: lsst-drp-kafka
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      strimzi.io/name: my-mirror-maker-2-mirrormaker2
+  podMetricsEndpoints:
+  - port: tcp-prometheus
+    path: /metrics
+    interval: 10s
