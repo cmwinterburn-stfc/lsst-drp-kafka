@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: kafka-bridge-pods
+  namespace: lsst-drp-kafka
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      strimzi.io/name: my-bridge-bridge
+  podMetricsEndpoints:
+  - port: tcp-prometheus
+    path: /metrics
+    interval: 10s
