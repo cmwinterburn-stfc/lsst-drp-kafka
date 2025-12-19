@@ -10,6 +10,6 @@ spec:
     matchLabels:
       strimzi.io/name: my-bridge-bridge
   podMetricsEndpoints:
-  - port: tcp-prometheus
+  - port: "8080"
     path: /metrics
     interval: 10s
