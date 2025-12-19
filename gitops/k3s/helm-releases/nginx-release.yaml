@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nginx
+  namespace: flux-system
+spec:
+  releaseName: nginx
+  targetNamespace: lsst-drp-kafka
+  interval: 5m
+  chart:
+    spec:
+      chart: nginx-ingress
+      version: "2.4.1"
+      sourceRef:
+        kind: HelmRepository
+        name: nginx-source
+        namespace: flux-system
