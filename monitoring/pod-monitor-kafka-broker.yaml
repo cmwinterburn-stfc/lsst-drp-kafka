@@ -1,10 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PodMonitor
 metadata:
-  name: kafka-broker
+  name: kafka-pods
   namespace: lsst-drp-kafka
   labels:
-    team: Tier-1
     release: prometheus
 spec:
   selector:
@@ -12,3 +11,4 @@ spec:
       strimzi.io/name: my-cluster-kafka
   endpoints:
   - port: tcp-prometheus
+    path: /metrics
