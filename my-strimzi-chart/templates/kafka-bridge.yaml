@@ -7,3 +7,5 @@ spec:
   bootstrapServers: {{ .Values.bridge.spec.bootstrapServers }}
   http:
     port: {{ .Values.bridge.spec.port }}
+  metricsConfig:
+    type: {{ .Values.bridge.metricsConfig.type }}
