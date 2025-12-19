@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       strimzi.io/name: my-cluster-kafka
-  endpoints:
+  podMetricsEndpoints:
   - port: tcp-prometheus
     path: /metrics
+    interval: 10s
