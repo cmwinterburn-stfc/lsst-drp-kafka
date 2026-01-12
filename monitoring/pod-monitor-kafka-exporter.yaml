@@ -8,8 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      strimzi.io/kind: KafkaExporter
-      strimzi.io/cluster: my-cluster
+      strimzi.io/name: my-cluster-kafka-exporter
   podMetricsEndpoints:
     - port: tcp-prometheus
       path: /metrics
