@@ -65,8 +65,7 @@ spec:
       min.insync.replicas: {{ .Values.kafka.config.minInSyncReplicas }}
     metricsConfig:
       type: {{ .Values.kafka.metricsConfig.type }}
-  entityOperator:
-    kafkaExporter:
-      groupRegex: '.*'
-      topicRegex: '.*'
+  kafkaExporter:
+    groupRegex: '.*'
+    topicRegex: '.*'
 
