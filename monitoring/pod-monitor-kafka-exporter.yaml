@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: kafka-exporter
+  namespace: lsst-drp-kafka
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      strimzi.io/kind: KafkaExporter
+      strimzi.io/cluster: my-cluster
+  podMetricsEndpoints:
+    - port: tcp-prometheus
+      path: /metrics
+      interval: 10s
