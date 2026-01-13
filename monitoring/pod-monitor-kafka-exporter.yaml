@@ -12,5 +12,5 @@ spec:
   podMetricsEndpoints:
     - port: tcp-prometheus
       path: /metrics
-      interval: 10s
-      scrapeTimeout: 80s
+      interval: 120s
+      scrapeTimeout: 60s
