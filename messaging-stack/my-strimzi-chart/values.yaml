@@ -6,7 +6,6 @@ kafka:
   cluster: my-cluster
   version: 4.1.1
   metadataVersion: 4.1-IV1
-  restartId: 1
 
   listeners:
     - name: plain
