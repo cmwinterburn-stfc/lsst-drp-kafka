@@ -4,7 +4,7 @@ metadata:
   name: mirrormaker-pods
   namespace: lsst-drp-kafka
   labels:
-    release: prometheus
+    Release: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
