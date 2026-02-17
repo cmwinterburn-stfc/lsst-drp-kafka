@@ -52,7 +52,7 @@ kafka:
 mirrormaker2:
   name: my-mirror-maker-2
   version: 4.1.1
-  replicas: 1
+  replicas: 0
   target: 
     alias: "RAL"
     bootstrapServers: my-cluster-kafka-bootstrap.lsst-drp-kafka.svc:9092
