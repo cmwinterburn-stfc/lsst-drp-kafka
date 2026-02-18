@@ -4,7 +4,7 @@ metadata:
   name: kafka-exporter
   namespace: lsst-drp-kafka
   labels:
-    release: kube-prometheus-stack
+    release: rancher-monitoring
 spec:
   selector:
     matchLabels:
