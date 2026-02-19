@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: lsst-voms-config
   namespace: lsst-drp-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 data:
   vomses: |
     "lsst" "voms.hec.lancs.ac.uk" "15003" "/C=UK/O=eScience/OU=Lancaster/L=Physics/CN=voms.hec.lancs.ac.uk" "lsst"

@@ -2,6 +2,8 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: lsst-renew-voms-proxy
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   schedule: "{{ .Values.vomsRenewal.schedule }}"
   jobTemplate:
@@ -30,10 +32,10 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: lsst-renew-voms-proxy-on-install
+  name: lsst-renew-voms-proxy-on-install   
   annotations:
-    "helm.sh/hook": pre-install
-    "helm.sh/hook-delete-policy": before-hook-creation
+    argocd.argoproj.io/sync-wave: "1"
+
 spec:
   template:
     spec:
