@@ -20,10 +20,6 @@ vomsRenewal:
     - name: voms-long-proxy
       mountPath: /etc/certs/
 
-  configMapMounts:
-    - name: lsst-voms-config
-      mountPath: /etc/vomses/
-
   resources:
     limits:
       cpu: 500m

@@ -20,7 +20,6 @@ spec:
               imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
               volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
-{{ .Values.vomsRenewal.configMapMounts | toYaml | indent 16 }}
               resources:
 {{ toYaml .Values.vomsRenewal.resources | indent 14 }}
 
@@ -46,7 +45,6 @@ spec:
           imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
           volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
-{{ .Values.vomsRenewal.configMapMounts | toYaml | indent 16 }}
           resources:
 {{ toYaml .Values.vomsRenewal.resources | indent 14 }}
       volumes:
