@@ -4,7 +4,7 @@ vomsRenewal:
   schedule: "42 */6 * * *"
 
   image:
-    repository: "harbor.stfc.ac.uk/ral-tier1_public/lsst/voms-proxy-renewal:"
+    repository: "harbor.stfc.ac.uk/ral-tier1_public/lsst/voms-proxy-renewal"
     tag: test-2025-02-18
     pullPolicy: Always
 
