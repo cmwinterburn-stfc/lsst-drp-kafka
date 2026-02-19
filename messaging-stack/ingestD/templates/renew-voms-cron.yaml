@@ -24,6 +24,7 @@ spec:
 
           volumes:
 {{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
+
 ---
 
 apiVersion: batch/v1
@@ -44,8 +45,7 @@ spec:
           volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
 {{ .Values.vomsRenewal.configMapMounts | toYaml | indent 16 }}
-              resources:
+          resources:
 {{ toYaml .Values.vomsRenewal.resources | indent 14 }}
-
-          volumes:
+      volumes:
 {{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
