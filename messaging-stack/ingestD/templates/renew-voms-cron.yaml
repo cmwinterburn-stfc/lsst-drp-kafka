@@ -11,7 +11,7 @@ spec:
       backoffLimit: {{ .Values.vomsRenewal.backoffLimit | default 1 }}
       template:
         spec:
-          serviceAccountName: {{ .Values.vomsRenewal.serviceAccountName" }}
+          serviceAccountName: {{ .Values.vomsRenewal.serviceAccountName }}
           imagePullSecrets:
             - name: {{ .Values.vomsRenewal.image.imagePullSecrets }}
           restartPolicy: {{ .Values.vomsRenewal.restartPolicy }}
