@@ -16,26 +16,41 @@ spec:
             - name: renew-voms-cron
               image: "{{ .Values.vomsRenewal.image.repository }}:{{ .Values.vomsRenewal.image.tag }}"
               imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
+              volumeMounts:
+{{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
+{{ .Values.vomsRenewal.configMapMounts | toYaml | indent 16 }}
               resources:
 {{ toYaml .Values.vomsRenewal.resources | indent 14 }}
+
+          volumes:
+{{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
+
 
 ---
 
 apiVersion: batch/v1
-kind: Job
+kind: CronJob
 metadata:
-  name: lsst-renew-voms-proxy-on-install
-  annotations:
-    "helm.sh/hook": pre-install
-    "helm.sh/hook-delete-policy": before-hook-creation
+  name: lsst-renew-voms-proxy
 spec:
-  template:
+  schedule: "{{ .Values.vomsRenewal.schedule }}"
+  jobTemplate:
     spec:
-      restartPolicy: OnFailure
-      containers:
-        - name: renew-voms-init
-          image: "{{ .Values.vomsRenewal.image.repository }}:{{ .Values.vomsRenewal.image.tag }}"
-          imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
+      backoffLimit: {{ .Values.vomsRenewal.backoffLimit | default 1 }}
+      template:
+        spec:
+          imagePullSecrets:
+            - name: harbor-tier1-test
+          restartPolicy: OnFailure
+          containers:
+            - name: renew-voms-cron
+              image: "{{ .Values.vomsRenewal.image.repository }}:{{ .Values.vomsRenewal.image.tag }}"
+              imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
+              volumeMounts:
+{{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
+{{ .Values.vomsRenewal.configMapMounts | toYaml | indent 16 }}
+              resources:
+{{ toYaml .Values.vomsRenewal.resources | indent 14 }}
 
-          resources:
-{{ toYaml .Values.vomsRenewal.resources | indent 12 }}
+          volumes:
+{{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
