@@ -22,7 +22,7 @@ spec:
               volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
           volumes:
-{{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
+{{ .Values.vomsRenewal.volumes | toYaml | indent 12 }}
 
 ---
 
@@ -44,4 +44,4 @@ spec:
           volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
       volumes:
-{{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
+{{ .Values.vomsRenewal.volumes | toYaml | indent 12 }}
