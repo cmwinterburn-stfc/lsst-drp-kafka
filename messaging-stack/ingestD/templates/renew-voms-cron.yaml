@@ -11,18 +11,16 @@ spec:
       backoffLimit: {{ .Values.vomsRenewal.backoffLimit | default 1 }}
       template:
         spec:
+          serviceAccountName: {{ .Values.vomsRenewal.serviceAccountName" }}
           imagePullSecrets:
-            - name: harbor-tier1-test
-          restartPolicy: OnFailure
+            - name: {{ .Values.vomsRenewal.image.imagePullSecrets }}
+          restartPolicy: {{ .Values.vomsRenewal.restartPolicy }}
           containers:
             - name: renew-voms-cron
               image: "{{ .Values.vomsRenewal.image.repository }}:{{ .Values.vomsRenewal.image.tag }}"
               imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
               volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
-              resources:
-{{ toYaml .Values.vomsRenewal.resources | indent 14 }}
-
           volumes:
 {{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
 
@@ -45,7 +43,5 @@ spec:
           imagePullPolicy: "{{ .Values.vomsRenewal.image.pullPolicy }}"
           volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
-          resources:
-{{ toYaml .Values.vomsRenewal.resources | indent 14 }}
       volumes:
 {{ .Values.vomsRenewal.volumes | toYaml | indent 16 }}
