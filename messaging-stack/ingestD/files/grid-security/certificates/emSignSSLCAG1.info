@@ -1,0 +1,15 @@
+#
+# @(#)$Id: emSignSSLCAG1.info,v 1.2 2023/07/29 12:57:50 pmacvsdg Exp $
+# eMuhdra emSign Certifying Authority trust anchor emSignSSLCAG1
+#
+alias = emSignSSLCAG1
+ca_url = https://repository.emsign.com/certs/emSignSSLCAG1.crt
+crl_url = http://crl.emsign.com/?emSignSSLCAG1.crl
+policy_url = https://repository.emsign.com/
+url = https://emudhra.com/products/digital-certificates
+email = support@emsign.com
+requires = emSignRootCAG1
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 47:64:AF:D6:A8:29:92:D9:31:47:25:B9:B8:77:05:AF:F4:E8:4B:E8
+subjectdn = "/C=IN/OU=emSign PKI/O=eMudhra Technologies Limited/CN=emSign SSL CA - G1"

@@ -1,0 +1,13 @@
+# @(#)$Id$
+# self-signed R&E Root GEANT and collaborators, ResearchandEducationTrustRSARootCA
+#
+alias = ResearchandEducationTrustRSARootCA
+ca_url = http://crt.enterprise.sectigo.com/ResearchandEducationTrustRSARootCA.crt
+crl_url = http://crl.enterprise.sectigo.com/ResearchandEducationTrustRSARootCA.crl
+policy_url = https://wiki.geant.org/display/TCSNT/TCS+Repository
+url = https://security.geant.org/trusted-certificate-services/
+email = tcs-pma@lists.geant.org
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 82:B6:21:AA:3E:55:62:54:38:3C:17:EB:43:0A:10:1F:B5:4A:37:F6
+subjectdn = "/O=Research and Education Trust/CN=Research and Education Trust RSA Root CA"

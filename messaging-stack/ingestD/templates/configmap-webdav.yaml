@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webdav-config
+  namespace: lsst-drp-kafka
+data:
+base_url: "davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/"
+user_cert: "/tmp/x509up"
+trusted_authorities: "/etc/grid-security/certificates/"

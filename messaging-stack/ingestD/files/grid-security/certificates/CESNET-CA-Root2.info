@@ -1,0 +1,14 @@
+#
+# @($)CESNET-CA-Root2 enrolled 2025-05-13
+# Subject: DC = cz, DC = cesnet-ca, O = CESNET CA, CN = CESNET CA Root 2
+#
+alias = CESNET-CA-Root2
+url = http://www.cesnet.cz/pki/
+ca_url = http://crl.cesnet-ca.cz/CESNET_CA_Root_2.crt
+crl_url = http://crl.cesnet-ca.cz/CESNET_CA_Root_2.crl
+policy_url = http://www.cesnet.cz/pki/en/ch-cp-cps.html
+email = ca@cesnet.cz
+status = accredited:classic
+version = 1.138
+sha1fp.0 = FC:7D:E8:09:74:78:91:01:C8:5E:2D:13:7E:CC:F6:97:6E:0B:A6:89
+subjectdn = "/DC=cz/DC=cesnet-ca/O=CESNET CA/CN=CESNET CA Root 2"

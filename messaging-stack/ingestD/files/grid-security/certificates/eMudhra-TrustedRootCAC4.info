@@ -1,0 +1,14 @@
+#
+# @(#)$Id: TrustedRootCAC4.info,v 1.2 2023/07/29 12:57:50 pmacvsdg Exp $
+# eMuhdra emSign Certifying Authority trust anchor TrustedRootCAC4
+#
+alias = eMudhra-TrustedRootCAC4
+ca_url = https://repository.emsign.com/certs/TrustedRootCAC4.crt
+crl_url = http://crl.emsign.com/?TrustedRootCAC4.crl
+policy_url = https://repository.emsign.com/
+url = https://emudhra.com/products/digital-certificates
+email = support@emsign.com
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 3B:6F:67:1F:CD:FC:17:01:64:1C:8D:07:15:18:37:79:01:54:6A:66
+subjectdn = "/C=US/OU=emSign PKI/O=eMudhra Inc/CN=emSign Trusted Root CA - C4"

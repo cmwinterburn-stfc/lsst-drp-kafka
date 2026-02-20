@@ -1,0 +1,12 @@
+#
+# @(#)$Id: e13e0fcf.info,v 1.5 2008/07/11 09:19:29 pmacvsdg Exp $
+# Information for CA SlovakGrid
+#   obtained from e13e0fcf in SlovakGrid/
+alias = SlovakGrid
+url = http://ups.savba.sk/ca
+email = ca.ui@sav.sk
+crl_url = http://ups.savba.sk/ca/slovakgrid.crl
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 4A:48:FD:4A:C9:42:AA:CF:F7:61:44:69:1C:13:D7:E5:04:40:97:55
+subjectdn = "/C=SK/O=SlovakGrid/CN=SlovakGrid CA"

@@ -1,0 +1,13 @@
+# @(#)$Id$
+# CN=Research and Education Trust RSA Root CA 5,O=GEANT Vereniging,C=NL
+#
+alias = GEANTTCSRETrustRSARootCA5
+ca_url = https://wiki.geant.org/download/attachments/929693773/GEANT-TCS-Root-R5.pem
+crl_url = http://crl.geant-prv.harica.gr/GEANT-TCS-Root-R5.crl
+policy_url = https://wiki.geant.org/display/TCSNT/TCS+Repository+2025
+url = https://security.geant.org/trusted-certificate-services/
+email = tcs-pma@lists.geant.org
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 44:9D:FA:FA:B8:F8:40:CC:1F:9D:7A:F9:BE:93:72:35:14:3C:71:0B
+subjectdn = "/C=NL/O=GEANT Vereniging/CN=Research and Education Trust RSA Root CA 5"

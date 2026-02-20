@@ -1,0 +1,15 @@
+#
+# @(#)emigtfc5r1.info
+# eMuhdra emSign Certifying Authority trust anchor emigtfc5r1
+#
+alias = emigtfc5r1
+ca_url = https://repository.emsign.com/certs/4C7.crt
+crl_url = http://crl.private.emsign.com/?4C7.crl
+policy_url = https://repository.emsign.com/
+url = https://emudhra.com/products/digital-certificates
+email = support@emsign.com
+requires = eMudhra-TrustedRootCAC5
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 60:F6:D4:6D:D5:9B:8A:F9:6D:2D:BA:C2:EF:44:6A:FA:62:60:E0:B5
+subjectdn = "/C=US/O=eMudhra Inc./CN=emSign Issuing CA IGTF - C5 - 1"

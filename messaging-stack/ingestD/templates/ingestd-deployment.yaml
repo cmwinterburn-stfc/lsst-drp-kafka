@@ -1,0 +1,124 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingestd
+  template:
+    metadata:
+      labels:
+        app: ingestd
+    spec:
+      containers:
+        - name: ingestd
+          image: ghcr.io/lsst-dm/ctrl_ingestd:2.4
+
+          # -----------------------------
+          # 1. Environment from ConfigMap
+          # -----------------------------
+          env:
+
+            - name: CTRL_INGESTD_CONFIG
+              value: /etc/ingestd-configs/ingestD.yaml
+
+            - name: LSST_DB_AUTH
+              value: /etc/db-auth.yaml
+
+            - name: DAF_BUTLER_REPOSITORY_INDEX
+              value: /etc/butler-repos-index.yaml
+
+            - name: LSST_HTTP_CACERT_BUNDLE
+              value: /etc/grid-security/certificates/
+
+            - name: LSST_HTTP_AUTH_CLIENT_KEY
+              value: /tmp/x509up_u99
+
+            - name: LSST_HTTP_AUTH_CLIENT_CERT
+              value: /tmp/x509up_u99
+
+            - name: LSST_RESOURCES_WEBDAV_CONFIG
+              value: /etc/webdav.config
+
+          # -----------------------------
+          # 2. File mounts
+          # -----------------------------
+          volumeMounts:
+
+            # Mount the user voms short proxy 
+            - name: shortproxy-lsst
+              mountPath: /tmp/x509up_u99
+              subPath: x509up_u99
+              readOnly: true
+
+            # Mount the butler access credentials
+            - name: butler-access
+              mountPath: /etc/db-auth.yaml
+              readOnly: true
+
+            # Mount the whole Grid CA trust bundle
+            - name: grid-certs
+              mountPath: /etc/grid-security/certificates
+              readOnly: true
+            
+            # Mount ingestd config as a file
+            - name: ingestd-config
+              mountPath: /etc/ingestd-configs/ingestD.yaml
+              subPath: ingestD.yaml
+              readOnly: true
+
+              # Moubt butler repos index as a file
+            - name: butler-repos-index
+              mountPath: /etc/butler-repos-index.yaml
+              subPath: butler-repos-index.yaml
+              readOnly: true
+
+              # Mount butler config as a file
+            - name: butler-config
+              mountPath: /etc/butler.yaml
+              subPath: butler.yaml
+              readOnly: true
+
+              # Mount webdav config as a file
+            - name: webdav-config
+              mountPath: /etc/webdav.config
+              subPath: webdav.config
+              readOnly: true
+
+      # -----------------------------
+      # 3. Volumes referencing CM/Secret
+      # -----------------------------
+      volumes:
+
+        # Secret containing the proxy certificate
+        - name: shortproxy-lsst
+          secret:
+            secretName: shortproxy-lsst
+
+        # Secret containing Butler access credentials
+        - name: butler-access
+          secret:
+            secretName: butler-access
+
+        # ConfigMaps containing butler, ingestd and certs config
+        - name: grid-certs
+          configMap:
+            name: grid-certs
+
+        - name: ingestd-config
+          configMap:
+            name: ingestd-config
+
+        - name: butler-repos-index
+          configMap:
+            name: butler-repos-index
+
+        - name: butler-config
+          configMap:
+            name: butler-config
+
+        - name: webdav-config
+          configMap:
+            name: webdav-config

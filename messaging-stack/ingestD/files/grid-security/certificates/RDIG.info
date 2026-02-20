@@ -1,0 +1,13 @@
+#
+# @(#)$Id: 55994d72.info,v 1.4 2006/05/16 11:15:06 pmacvsdg Exp $
+# Information for CA RDIG
+#   obtained from 55994d72 in Russia/
+alias = RDIG
+ca_url = http://ca.grid.kiae.ru/RDIG/cacrt.pem
+crl_url = http://ice.grid.kiae.ru/ca/RDIG/cacrl.pem
+email = rdig-ca-support@grid.kiae.ru
+status = accredited:classic
+url = http://ca.grid.kiae.ru/RDIG/
+version = 1.138
+sha1fp.0 = 69:94:15:0F:7D:8A:81:B2:4B:67:94:B6:B5:EF:F9:2E:63:A8:B4:21
+subjectdn = "/C=RU/O=RDIG/CN=Russian Data-Intensive Grid CA"

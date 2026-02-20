@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: butler-repos-index
+  namespace: lsst-drp-kafka
+data:
+  butler.yaml: |
+    panda-test-med-1:  /etc/butler.yaml
+    hsc_pdr2_multisite: /etc/butler.yaml
+    dc2: /etc/butler.yaml
+    ccms1: /etc/butler.yaml
+    dp2_prep: /etc/butler.yaml

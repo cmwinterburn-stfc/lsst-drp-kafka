@@ -1,0 +1,10 @@
+# @(#)KEK2024.info - added 20250912
+alias = KEK2024
+crl_url = http://gridca2024.kek.jp/repository/e7a6d5cc.r0
+ca_url = https://gridca2024.kek.jp/repository/e7a6d5cc.0
+email = kekgridca-contact@ml.post.kek.jp
+status = accredited:classic
+url = https://gridca2024.kek.jp/
+version = 1.138
+sha1fp.0 = 59:27:B9:D9:F3:4F:DE:6B:26:3B:79:91:CE:40:CB:48:76:AD:7F:34
+subjectdn = "/C=JP/O=KEK/OU=CRC/CN=KEK GRID Certificate Authority2024"

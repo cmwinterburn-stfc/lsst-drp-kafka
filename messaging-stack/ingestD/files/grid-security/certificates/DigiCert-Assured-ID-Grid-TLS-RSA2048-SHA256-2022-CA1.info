@@ -1,0 +1,13 @@
+#
+# Information for /C=US/O=DigiCert, Inc. /CN=DigiCert Assured ID Grid TLS RSA2048 SHA256 2022 CA1
+#
+alias = DigiCert-Assured-ID-Grid-TLS-RSA2048-SHA256-2022-CA1
+ca_url = https://www.digicert-grid.com/DigiCertAssuredIDGridTLSRSA2048SHA2562022CA1.pem
+crl_url = http://crl4.digicert.com/DigiCertAssuredIDGridTLSRSA2048SHA2562022CA1.crl
+email = prodseccompliance@digicert.com
+status = accredited:classic
+url = http://www.digicert-grid.com/
+requires = DigiCertAssuredIDRootCA-Root
+version = 1.138
+sha1fp.0 = DD:E0:C4:B0:5A:36:B1:09:F1:44:ED:51:C5:90:B6:BF:67:E3:05:70
+subjectdn = "/C=US/O=DigiCert, Inc./CN=DigiCert Assured ID Grid TLS RSA2048 SHA256 2022 CA1"

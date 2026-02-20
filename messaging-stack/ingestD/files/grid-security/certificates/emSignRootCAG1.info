@@ -1,0 +1,14 @@
+#
+# @(#)$Id: emSignRootCAG1.info,v 1.2 2023/07/29 12:57:50 pmacvsdg Exp $
+# eMuhdra emSign Certifying Authority trust anchor emSignRootCAG1
+#
+alias = emSignRootCAG1
+ca_url = https://repository.emsign.com/certs/emSignRootCAG1.crt
+crl_url = http://crl.emsign.com/?RootCAG1.crl
+policy_url = https://repository.emsign.com/
+url = https://emudhra.com/products/digital-certificates
+email = support@emsign.com
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 8A:C7:AD:8F:73:AC:4E:C1:B5:75:4D:A5:40:F4:FC:CF:7C:B5:8E:8C
+subjectdn = "/C=IN/OU=emSign PKI/O=eMudhra Technologies Limited/CN=emSign Root CA - G1"

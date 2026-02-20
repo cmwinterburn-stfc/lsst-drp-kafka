@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grid-certs
+  namespace: lsst-drp-kafka
+data:
+{{ (.Files.Glob "files/grid-security/certificates/*").AsConfig | indent 2 }}

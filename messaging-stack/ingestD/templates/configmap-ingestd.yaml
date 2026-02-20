@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingestd-config
+  namespace: lsst-drp-kafka
+data:
+  ingestD.yaml: |
+    brokers:
+      - my-cluster-broker-0:29092
+    group_id: "ral_ingestd"
+    num_messages: 50
+    butler_repo: ccms1
+    topics:
+      USDF_RAL_BUTLER_DISK-ccms1:
+        rucio_prefix: davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/butler/repos/ccms1/
+
+#echo_base_url: "davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/"

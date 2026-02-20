@@ -1,0 +1,12 @@
+# @(#)$Id: 4339b4bc.info,v 1.2 2015/03/17 01:26:26 pmacvsdg Exp $
+# subject= /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+alias = CERN-GridCA
+crl_url = http://cafiles.cern.ch/cafiles/crl/CERN%20Grid%20Certification%20Authority.crl
+ca_url = http://cafiles.cern.ch/cafiles/certificates/CERN%20Grid%20Certification%20Authority.crt
+url = http://www.cern.ch/ca
+email = cern-ca-managers@cern.ch
+requires = CERN-Root-2
+status = accredited:classic
+version = 1.138
+sha1fp.0 = 71:A1:FC:1A:77:68:17:B9:5C:84:89:3A:28:2D:66:70:DC:93:83:CD
+subjectdn = "/DC=ch/DC=cern/CN=CERN Grid Certification Authority"
