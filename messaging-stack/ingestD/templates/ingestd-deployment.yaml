@@ -117,6 +117,10 @@ spec:
         - name: butler-repos-index
           configMap:
             name: butler-repos-index
+            items:
+              - key: butler-repos-index.yaml
+                path: butler-repos-index.yaml
+
 
         - name: butler-config
           configMap:
