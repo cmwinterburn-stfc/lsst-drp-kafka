@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: butler-config
   namespace: lsst-drp-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 data:
   butler.yaml: |
     datastore:

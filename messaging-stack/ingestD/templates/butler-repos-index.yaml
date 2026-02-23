@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: butler-repos-index
   namespace: lsst-drp-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 data:
   butler.yaml: |
     panda-test-med-1:  /etc/butler.yaml

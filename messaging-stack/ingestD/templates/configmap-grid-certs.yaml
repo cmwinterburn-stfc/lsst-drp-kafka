@@ -3,5 +3,7 @@ kind: ConfigMap
 metadata:
   name: grid-certs
   namespace: lsst-drp-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 data:
 {{ (.Files.Glob "files/grid-security/certificates/*").AsConfig | indent 2 }}
