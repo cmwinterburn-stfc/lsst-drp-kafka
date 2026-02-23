@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 data:
-  butler.yaml: |
+  butler-repos-index.yaml: |
     panda-test-med-1:  /etc/butler.yaml
     hsc_pdr2_multisite: /etc/butler.yaml
     dc2: /etc/butler.yaml

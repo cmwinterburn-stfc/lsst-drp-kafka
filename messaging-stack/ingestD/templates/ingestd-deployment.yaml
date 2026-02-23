@@ -59,6 +59,7 @@ spec:
             # Mount the butler access credentials
             - name: butler-access
               mountPath: /etc/db-auth.yaml
+              subPath: db-auth.yaml
               readOnly: true
 
             # Mount the whole Grid CA trust bundle
@@ -117,10 +118,6 @@ spec:
         - name: butler-repos-index
           configMap:
             name: butler-repos-index
-            items:
-              - key: butler-repos-index.yaml
-                path: butler-repos-index.yaml
-
 
         - name: butler-config
           configMap:
