@@ -105,6 +105,7 @@ spec:
         - name: butler-access
           secret:
             secretName: butler-access
+            defaultMode: 0600
 
         # ConfigMaps containing butler, ingestd and certs config
         - name: grid-certs

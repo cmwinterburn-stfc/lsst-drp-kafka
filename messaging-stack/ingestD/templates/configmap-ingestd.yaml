@@ -8,7 +8,7 @@ metadata:
 data:
   ingestD.yaml: |
     brokers:
-      - my-cluster-broker-0:9092
+      - my-cluster-kafka-bootstrap:9092
     group_id: "ral_ingestd"
     num_messages: 50
     butler_repo: ccms1
