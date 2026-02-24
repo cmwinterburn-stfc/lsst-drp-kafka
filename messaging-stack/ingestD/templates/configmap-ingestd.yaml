@@ -11,9 +11,9 @@ data:
       - my-cluster-kafka-bootstrap:9092
     group_id: "ral_ingestd"
     num_messages: 50
-    butler_repo: ccms1
+    butler_repo: dp2_prep
     topics:
-      RAL_BUTLER_DISK-ccms1:
-        rucio_prefix: davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/butler/repos/ccms1/
+      RAL_BUTLER_DISK-dp2_prep:
+        rucio_prefix: davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/butler/repos/dp2_prep/
 
 #echo_base_url: "davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/"
