@@ -75,6 +75,7 @@ mirrormaker2:
         offsetSyncsTopicReplicationFactor: 1
         syncTopicAclsEnabled: "false"
         refreshTopicsIntervalSeconds: 600
+        replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
     checkpointConnector:
       tasksMax: 1
       config:
