@@ -15,9 +15,11 @@ spec:
       labels:
         app: ingestd
     spec:
+      imagePullSecrets: harbor-tier1-test
       containers:
         - name: ingestd
-          image: ghcr.io/lsst-dm/ctrl_ingestd:2.4
+          image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd:ingestd-2025-02-26.debug
+          pullPolicy: Always
 
           securityContext:
             runAsUser: 0
