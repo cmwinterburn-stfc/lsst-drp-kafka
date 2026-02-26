@@ -20,7 +20,7 @@ spec:
       containers:
         - name: ingestd
           image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd/ingestd:2026-02-26.debug
-          pullPolicy: Always
+          imagePullPolicy: Always
 
           securityContext:
             runAsUser: 0
