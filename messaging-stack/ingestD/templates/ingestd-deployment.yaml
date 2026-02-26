@@ -15,7 +15,8 @@ spec:
       labels:
         app: ingestd
     spec:
-      imagePullSecrets: harbor-tier1-test
+      imagePullSecrets: 
+        - name: harbor-tier1-test
       containers:
         - name: ingestd
           image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd:ingestd-2025-02-26.debug
