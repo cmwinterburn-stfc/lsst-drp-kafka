@@ -30,7 +30,7 @@ spec:
             - |
               echo "Preparing Butler DB auth file..."
               cp /secret-src/db-auth.yaml /work/db-auth.yaml
-              chown lsst:lsst /work/db-auth.yaml
+              chown 1000:1000 /work/db-auth.yaml
               chmod 600 /work/db-auth.yaml
               ls -l /work/db-auth.yaml
               echo "Done."
