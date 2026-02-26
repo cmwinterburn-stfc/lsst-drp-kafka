@@ -22,9 +22,9 @@ spec:
           image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd/ingestd:2026-02-26.debug2
           imagePullPolicy: Always
 
-          securityContext:
-            runAsUser: 0
-            runAsGroup: 0
+          # securityContext:
+          #   runAsUser: 0
+          #   runAsGroup: 0
 
           # -----------------------------
           # 1. Environment from ConfigMap
