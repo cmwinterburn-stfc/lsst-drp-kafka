@@ -17,25 +17,50 @@ spec:
     spec:
       imagePullSecrets: 
         - name: harbor-tier1-test
+
+      # ----------------------------------------------------
+      # INIT CONTAINER: prepares db-auth.yaml with correct perms
+      # ----------------------------------------------------
+      initContainers:
+        - name: prepare-dbauth
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Preparing Butler DB auth file..."
+              cp /secret-src/db-auth.yaml /work/db-auth.yaml
+              chown lsst:lsst /work/db-auth.yaml
+              chmod 600 /work/db-auth.yaml
+              ls -l /work/db-auth.yaml
+              echo "Done."
+          volumeMounts:
+            - name: butler-secret
+              mountPath: /secret-src    # Secret appears here
+              readOnly: true
+            - name: dbauth-work
+              mountPath: /work          # Writable destination
+
       containers:
         - name: ingestd
           image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd/ingestd:2026-02-26.debug2
           imagePullPolicy: Always
 
-          # securityContext:
-          #   runAsUser: 0
-          #   runAsGroup: 0
+          # DO NOT RUN AS ROOT
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
 
           # -----------------------------
-          # 1. Environment from ConfigMap
+          # Environment
           # -----------------------------
           env:
-
             - name: CTRL_INGESTD_CONFIG
               value: /etc/ingestd-configs/ingestD.yaml
 
+            # IMPORTANT — this now points to the FILE CREATED BY INITCONTAINER
             - name: LSST_DB_AUTH
-              value: /etc/db-auth.yaml
+              value: /work/db-auth.yaml
 
             - name: DAF_BUTLER_REPOSITORY_INDEX
               value: /etc/butler-repos-index.yaml
@@ -53,68 +78,61 @@ spec:
               value: /etc/webdav.config
 
           # -----------------------------
-          # 2. File mounts
+          # Volume Mounts
           # -----------------------------
           volumeMounts:
-
-            # Mount the user voms short proxy 
             - name: shortproxy-lsst
               mountPath: /tmp/x509up_u99
               subPath: x509up_u99
               readOnly: true
 
-            # Mount the butler access credentials
-            - name: butler-access
-              mountPath: /etc/db-auth.yaml
-              subPath: db-auth.yaml
-              readOnly: true
-
-            # Mount the whole Grid CA trust bundle
             - name: grid-certs
               mountPath: /etc/grid-security/certificates
               readOnly: true
-            
-            # Mount ingestd config as a file
+
             - name: ingestd-config
               mountPath: /etc/ingestd-configs/ingestD.yaml
               subPath: ingestD.yaml
               readOnly: true
 
-              # Moubt butler repos index as a file
             - name: butler-repos-index
               mountPath: /etc/butler-repos-index.yaml
               subPath: butler-repos-index.yaml
               readOnly: true
 
-              # Mount butler config as a file
             - name: butler-config
               mountPath: /etc/butler.yaml
               subPath: butler.yaml
               readOnly: true
 
-              # Mount webdav config as a file
             - name: webdav-config
               mountPath: /etc/webdav.config
               subPath: webdav.config
               readOnly: true
 
+            # Mount shared prepared db-auth.yaml
+            - name: dbauth-work
+              mountPath: /work
+
       # -----------------------------
-      # 3. Volumes referencing CM/Secret
+      # Volumes
       # -----------------------------
       volumes:
 
-        # Secret containing the proxy certificate
         - name: shortproxy-lsst
           secret:
             secretName: shortproxy-lsst
 
-        # Secret containing Butler access credentials
-        - name: butler-access
+        # SECRET — raw read-only db-auth.yaml
+        - name: butler-secret
           secret:
             secretName: butler-access
-            defaultMode: 0600
+            defaultMode: 0600   # Required by DbAuth
 
-        # ConfigMaps containing butler, ingestd and certs config
+        # Writable place where initContainer places prepared file
+        - name: dbauth-work
+          emptyDir: {}          # Lives for life of pod
+
         - name: grid-certs
           configMap:
             name: grid-certs
