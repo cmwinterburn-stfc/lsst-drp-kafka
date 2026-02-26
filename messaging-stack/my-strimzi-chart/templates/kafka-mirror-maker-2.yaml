@@ -28,12 +28,14 @@ spec:
           offset-syncs.topic.replication.factor: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.offsetSyncsTopicReplicationFactor }}
           sync.topic.acls.enabled: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.syncTopicAclsEnabled }}
           refresh.topics.interval.seconds: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.refreshTopicsIntervalSeconds }}
+          replication.policy.class: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.replicationPolicyClass }}
     checkpointConnector:
         tasksMax: {{ .Values.mirrormaker2.mirrors.checkpointConnector.tasksMax }}
         config:
           checkpoints.topic.replication.factor: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.checkpointsTopicReplicationFactor }}
           sync.group.offsets.enabled: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.syncGroupOffsetsEnabled }}
           refresh.groups.interval.seconds: {{ .Values.mirrormaker2.mirrors.checkpointConnector.config.refreshGroupsIntervalSeconds }}
+          replication.policy.class: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.replicationPolicyClass }}
     topicsPattern: {{ .Values.mirrormaker2.mirrors.topicsPattern }}
     groupsPattern: {{ .Values.mirrormaker2.mirrors.groupsPattern }}
   metricsConfig:

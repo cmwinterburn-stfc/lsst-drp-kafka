@@ -81,6 +81,7 @@ mirrormaker2:
         checkpointsTopicReplicationFactor: -1
         syncGroupOffsetsEnabled: "false"
         refreshGroupsIntervalSeconds: 600
+        replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
     topicsPattern: "RAL_.*"
     groupsPattern: ".*"
   metricsConfig:
