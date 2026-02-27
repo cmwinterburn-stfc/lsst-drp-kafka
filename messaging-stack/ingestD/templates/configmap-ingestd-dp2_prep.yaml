@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ingestd-config
-  namespace: lsst-drp-kafka
+  name: ingestd-dp2-prep-config
+  namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: {{ .Values.configMaps.argoSyncWave }}
 data:
   ingestD.yaml: |
     brokers:

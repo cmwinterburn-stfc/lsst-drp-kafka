@@ -1,0 +1,107 @@
+namespace: lsst-drp-kafka
+
+configMaps:
+  argoSyncWave: "0"
+
+ingestd:
+  argoSyncWave: "1"
+
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: ingestd
+    template:
+      metadata:
+        labels:
+          app: ingestd
+      spec:
+        imagePullSecrets:
+          - name: harbor-tier1-test
+
+  initContainer:
+    name: prepare-dbauth
+    image: busybox:1.36
+    volumeMounts:
+      - name: butler-secret
+        mountPath: /secret-src
+        readOnly: true
+      - name: dbauth-work
+        mountPath: /work
+
+  container:
+    name: ingestd
+    image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd/ingestd:2026-02-26.debug2
+    imagePullPolicy: Always
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+    env:
+      - name: CTRL_INGESTD_CONFIG
+        value: /etc/ingestd-configs/ingestD.yaml
+      - name: LSST_DB_AUTH
+        value: /work/db-auth.yaml
+      - name: DAF_BUTLER_REPOSITORY_INDEX
+        value: /etc/butler-repos-index.yaml
+      - name: LSST_HTTP_CACERT_BUNDLE
+        value: /etc/grid-security/certificates/
+      - name: LSST_HTTP_AUTH_CLIENT_KEY
+        value: /tmp/x509up_u99
+      - name: LSST_HTTP_AUTH_CLIENT_CERT
+        value: /tmp/x509up_u99
+      - name: LSST_RESOURCES_WEBDAV_CONFIG
+        value: /etc/webdav.config
+    volumeMounts:
+      - name: shortproxy-lsst
+        mountPath: /tmp/x509up_u99
+        subPath: x509up_u99
+        readOnly: true
+      - name: grid-certs
+        mountPath: /etc/grid-security/certificates
+        readOnly: true
+      - name: ingestd-config
+        mountPath: /etc/ingestd-configs/ingestD.yaml
+        subPath: ingestD.yaml
+        readOnly: true
+      - name: butler-repos-index
+        mountPath: /etc/butler-repos-index.yaml
+        subPath: butler-repos-index.yaml
+        readOnly: true
+      - name: butler-config
+        mountPath: /etc/butler.yaml
+        subPath: butler.yaml
+        readOnly: true
+      - name: webdav-config
+        mountPath: /etc/webdav.config
+        subPath: webdav.config
+        readOnly: true
+      - name: dbauth-work
+        mountPath: /work
+        readOnly: false
+
+  volumes:
+    shortproxy-lsst:
+      secret:
+        secretName: shortproxy-lsst
+    butler-secret:
+      secret:
+        secretName: butler-access
+        defaultMode: 0600
+    dbauth-work:
+      emptyDir: {}
+    grid-certs:
+      configMap:
+        name: grid-certs
+    ingestd-config:
+      configMap:
+        name: ingestd-config
+    butler-repos-index:
+      configMap:
+        name: butler-repos-index
+    butler-config:
+      configMap:
+        name: butler-config
+    webdav-config:
+      configMap:
+        name: webdav-config
+

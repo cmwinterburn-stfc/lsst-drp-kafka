@@ -4,26 +4,26 @@ metadata:
   name: ingestd
   namespace: lsst-drp-kafka
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: {{ .Values.ingestd.argoSyncWave }}
+
 spec:
-  replicas: 1
+  replicas: {{ .Values.ingestd.spec.replicas }}
   selector:
     matchLabels:
-      app: ingestd
+      app: {{ .Values.ingestd.spec.selector.matchLabels.app }}
+
   template:
     metadata:
       labels:
-        app: ingestd
+        app: {{ .Values.ingestd.spec.template.metadata.labels.app }}
+
     spec:
       imagePullSecrets: 
-        - name: harbor-tier1-test
+{{ .Values.ingestd.spec.template.spec.imagePullSecrets | toYaml | indent 8 }}
 
-      # ----------------------------------------------------
-      # INIT CONTAINER: prepares db-auth.yaml with correct perms
-      # ----------------------------------------------------
       initContainers:
-        - name: prepare-dbauth
-          image: busybox:1.36
+        - name: {{ .Values.initContainer.name }}
+          image: {{ .Values.initContainer.image }}  
           command:
             - sh
             - -c
@@ -34,121 +34,23 @@ spec:
               chmod 600 /work/db-auth.yaml
               ls -l /work/db-auth.yaml
               echo "Done."
-          volumeMounts:
-            - name: butler-secret
-              mountPath: /secret-src    # Secret appears here
-              readOnly: true
-            - name: dbauth-work
-              mountPath: /work          # Writable destination
+          volumeMounts: 
+{{ .Values.initContainer.volumeMounts | toYaml | indent 12 }}
 
       containers:
-        - name: ingestd
-          image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd/ingestd:2026-02-26.debug2
-          imagePullPolicy: Always
-
-          # DO NOT RUN AS ROOT
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.container.image }}
+          imagePullPolicy: {{ .Values.container.imagePullPolicy }}
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-
-          # -----------------------------
-          # Environment
-          # -----------------------------
+            runAsUser: {{ .Values.container.securityContext.runAsUser }}
+            runAsGroup: {{ .Values.container.securityContext.runAsGroup }}
           env:
-            - name: CTRL_INGESTD_CONFIG
-              value: /etc/ingestd-configs/ingestD.yaml
-
-            # IMPORTANT — this now points to the FILE CREATED BY INITCONTAINER
-            - name: LSST_DB_AUTH
-              value: /work/db-auth.yaml
-
-            - name: DAF_BUTLER_REPOSITORY_INDEX
-              value: /etc/butler-repos-index.yaml
-
-            - name: LSST_HTTP_CACERT_BUNDLE
-              value: /etc/grid-security/certificates/
-
-            - name: LSST_HTTP_AUTH_CLIENT_KEY
-              value: /tmp/x509up_u99
-
-            - name: LSST_HTTP_AUTH_CLIENT_CERT
-              value: /tmp/x509up_u99
-
-            - name: LSST_RESOURCES_WEBDAV_CONFIG
-              value: /etc/webdav.config
-
-          # -----------------------------
-          # Volume Mounts
-          # -----------------------------
+{{ toYaml .Values.ingestd.container.env | indent 12 }}
           volumeMounts:
-            - name: shortproxy-lsst
-              mountPath: /tmp/x509up_u99
-              subPath: x509up_u99
-              readOnly: true
+{{toYaml .Values.ingestd.container.volumeMounts | indent 12 }}
 
-            - name: grid-certs
-              mountPath: /etc/grid-security/certificates
-              readOnly: true
-
-            - name: ingestd-config
-              mountPath: /etc/ingestd-configs/ingestD.yaml
-              subPath: ingestD.yaml
-              readOnly: true
-
-            - name: butler-repos-index
-              mountPath: /etc/butler-repos-index.yaml
-              subPath: butler-repos-index.yaml
-              readOnly: true
-
-            - name: butler-config
-              mountPath: /etc/butler.yaml
-              subPath: butler.yaml
-              readOnly: true
-
-            - name: webdav-config
-              mountPath: /etc/webdav.config
-              subPath: webdav.config
-              readOnly: true
-
-            # Mount shared prepared db-auth.yaml
-            - name: dbauth-work
-              mountPath: /work
-
-      # -----------------------------
-      # Volumes
-      # -----------------------------
       volumes:
-
-        - name: shortproxy-lsst
-          secret:
-            secretName: shortproxy-lsst
-
-        # SECRET — raw read-only db-auth.yaml
-        - name: butler-secret
-          secret:
-            secretName: butler-access
-            defaultMode: 0600   # Required by DbAuth
-
-        # Writable place where initContainer places prepared file
-        - name: dbauth-work
-          emptyDir: {}          # Lives for life of pod
-
-        - name: grid-certs
-          configMap:
-            name: grid-certs
-
-        - name: ingestd-config
-          configMap:
-            name: ingestd-config
-
-        - name: butler-repos-index
-          configMap:
-            name: butler-repos-index
-
-        - name: butler-config
-          configMap:
-            name: butler-config
-
-        - name: webdav-config
-          configMap:
-            name: webdav-config
+{{- range $name, $vol := .Values.ingestd.volumes }}
+        - name: {{ $name }}
+{{ toYaml $vol | nindent 10 }}
+{{- end }}
