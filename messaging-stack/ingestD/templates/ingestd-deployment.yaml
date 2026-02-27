@@ -4,7 +4,7 @@ metadata:
   name: ingestd
   namespace: lsst-drp-kafka
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.ingestd.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.ingestd.argoSyncWave }}"
 
 spec:
   replicas: {{ .Values.ingestd.spec.replicas }}

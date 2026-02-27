@@ -4,7 +4,7 @@ metadata:
   name: ingestd-ccms-config
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.configMaps.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"
 data:
   ingestD.yaml: |
     brokers:

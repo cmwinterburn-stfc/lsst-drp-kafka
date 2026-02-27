@@ -4,7 +4,7 @@ metadata:
   name: webdav-config
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.configMaps.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"
 data:
   base_url: "davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/"
   user_cert: "/tmp/x509up"

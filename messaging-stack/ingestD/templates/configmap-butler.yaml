@@ -4,7 +4,7 @@ metadata:
   name: butler-config
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.configMaps.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"
 data:
   butler.yaml: |
     datastore:

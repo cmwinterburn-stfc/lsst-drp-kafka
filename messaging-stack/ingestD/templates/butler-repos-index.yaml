@@ -4,7 +4,7 @@ metadata:
   name: butler-repos-index
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.configMaps.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"
 data:
   butler-repos-index.yaml: |
     panda-test-med-1:  /etc/butler.yaml
