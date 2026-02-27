@@ -94,7 +94,7 @@ ingestd:
         name: grid-certs
     ingestd-config:
       configMap:
-        name: ingestd-config
+        name: ingestd-dp2-prep-config
     butler-repos-index:
       configMap:
         name: butler-repos-index
