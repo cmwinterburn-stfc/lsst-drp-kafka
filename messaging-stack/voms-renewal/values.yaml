@@ -1,8 +1,5 @@
 namespace: lsst-drp-kafka
 
-configMaps:
-  argoSyncWave: "0"
-
 vomsRenewal:
   cron: 
     argoSyncWave: "1"

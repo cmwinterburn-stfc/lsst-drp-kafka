@@ -1,0 +1,4 @@
+namespace: lsst-drp-kafka
+
+configMaps:
+  argoSyncWave: "0"
