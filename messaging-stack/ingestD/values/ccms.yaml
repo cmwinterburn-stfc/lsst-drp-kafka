@@ -1,7 +1,6 @@
 ingestd:
   name: ingestd-ccms
-  container:
-    volumes:
-      ingestd-config:
-        configMap:
-          name: ingestd-ccms-config
+  volumes:
+    ingestd-config:
+      configMap:
+        name: ingestd-ccms-config

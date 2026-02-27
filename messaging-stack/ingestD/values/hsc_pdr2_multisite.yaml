@@ -1,7 +1,6 @@
 ingestd:
   name: ingestd-hsc-pdr2-multisite
-  container:
-    volumes:
-      ingestd-config:
-        configMap:
-          name: ingestd-hsc-pdr2-multisite-config
+  volumes:
+    ingestd-config:
+      configMap:
+        name: ingestd-hsc-pdr2-multisite-config

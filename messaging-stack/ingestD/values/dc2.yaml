@@ -1,7 +1,6 @@
 ingestd:
   name: ingestd-dc2
-  container:
-    volumes:
-      ingestd-config:
-        configMap:
-          name: ingestd-dc2-config
+  volumes:
+    ingestd-config:
+      configMap:
+        name: ingestd-dc2-config

@@ -1,7 +1,6 @@
 ingestd:
   name: ingestd-dp2-prep
-  container:
-    volumes:
-      ingestd-config:
-        configMap:
-          name: ingestd-dp2-prep-config
+  volumes:
+    ingestd-config:
+      configMap:
+        name: ingestd-dp2-prep-config
