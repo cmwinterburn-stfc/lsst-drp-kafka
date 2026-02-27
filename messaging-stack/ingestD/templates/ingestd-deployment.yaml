@@ -35,7 +35,7 @@ spec:
               ls -l /work/db-auth.yaml
               echo "Done."
           volumeMounts: 
-{{ .Values.initContainer.volumeMounts | toYaml | indent 12 }}
+{{ .Values.ingestd.initContainer.volumeMounts | toYaml | indent 12 }}
 
       containers:
         - name: {{ .Values.ingestd.container.name }}
