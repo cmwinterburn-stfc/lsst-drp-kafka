@@ -17,9 +17,9 @@ spec:
       labels:
         app: {{ .Values.ingestd.spec.template.metadata.labels.app }}
 
-    spec:
-      imagePullSecrets: 
-{{ .Values.ingestd.spec.template.spec.imagePullSecrets | toYaml | indent 8 }}
+#     spec:
+#       imagePullSecrets: 
+# {{ .Values.ingestd.spec.template.spec.imagePullSecrets | toYaml | indent 8 }}
 
       initContainers:
         - name: {{ .Values.ingestd.initContainer.name }}
