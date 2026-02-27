@@ -13,9 +13,6 @@ ingestd:
       metadata:
         labels:
           app: ingestd
-      # spec:
-      #   imagePullSecrets:
-      #     - name: harbor-tier1-test
 
   initContainer:
     name: prepare-dbauth
@@ -29,7 +26,6 @@ ingestd:
 
   container:
     name: ingestd
-    #image: harbor.stfc.ac.uk/ral-tier1_public/lsst/ingestd/ingestd:2026-02-26.debug2
     image: ghcr.io/lsst-dm/ctrl_ingestd:2.4
     imagePullPolicy: Always
     securityContext:
