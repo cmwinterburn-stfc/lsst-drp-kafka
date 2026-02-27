@@ -1,4 +1,5 @@
 ingestd:
+  name: ingestd-dc2
   container:
     volumes:
       ingestd-config:

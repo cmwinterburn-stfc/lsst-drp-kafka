@@ -1,4 +1,5 @@
 ingestd:
+  name: ingestd-hsc-pdr2-multisite
   container:
     volumes:
       ingestd-config:

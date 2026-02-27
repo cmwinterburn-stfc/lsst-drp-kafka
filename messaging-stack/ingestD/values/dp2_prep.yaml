@@ -1,4 +1,5 @@
 ingestd:
+  name: ingestd-dp2-prep
   container:
     volumes:
       ingestd-config:

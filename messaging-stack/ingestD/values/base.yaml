@@ -1,6 +1,7 @@
 namespace: lsst-drp-kafka
 
 ingestd:
+  name: ingestd
   argoSyncWave: "1"
 
   spec:
