@@ -59,7 +59,7 @@ ingestd:
       - name: grid-certs
         mountPath: /etc/grid-security/certificates
         readOnly: true
-      - name: ingestd-dp2-prep-config
+      - name: ingestd-config
         mountPath: /etc/ingestd-configs/ingestD.yaml
         subPath: ingestD.yaml
         readOnly: true
