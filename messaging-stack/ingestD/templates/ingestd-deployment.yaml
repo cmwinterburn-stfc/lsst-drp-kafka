@@ -17,6 +17,7 @@ spec:
       labels:
         app: {{ .Values.ingestd.spec.template.metadata.labels.app }}
 
+    spec:
       initContainers:
         - name: {{ .Values.ingestd.initContainer.name }}
           image: {{ .Values.ingestd.initContainer.image }}  
