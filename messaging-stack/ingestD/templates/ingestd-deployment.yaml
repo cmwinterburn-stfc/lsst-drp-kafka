@@ -22,8 +22,8 @@ spec:
 {{ .Values.ingestd.spec.template.spec.imagePullSecrets | toYaml | indent 8 }}
 
       initContainers:
-        - name: {{ .Values.initContainer.name }}
-          image: {{ .Values.initContainer.image }}  
+        - name: {{ .Values.ingestd.initContainer.name }}
+          image: {{ .Values.ingestd.initContainer.image }}  
           command:
             - sh
             - -c
@@ -38,12 +38,12 @@ spec:
 {{ .Values.initContainer.volumeMounts | toYaml | indent 12 }}
 
       containers:
-        - name: {{ .Values.container.name }}
-          image: {{ .Values.container.image }}
-          imagePullPolicy: {{ .Values.container.imagePullPolicy }}
+        - name: {{ .Values.ingestd.container.name }}
+          image: {{ .Values.ingestd.container.image }}
+          imagePullPolicy: {{ .Values.ingestd.container.imagePullPolicy }}
           securityContext:
-            runAsUser: {{ .Values.container.securityContext.runAsUser }}
-            runAsGroup: {{ .Values.container.securityContext.runAsGroup }}
+            runAsUser: {{ .Values.ingestd.container.securityContext.runAsUser }}
+            runAsGroup: {{ .Values.ingestd.container.securityContext.runAsGroup }}
           env:
 {{ toYaml .Values.ingestd.container.env | indent 12 }}
           volumeMounts:
