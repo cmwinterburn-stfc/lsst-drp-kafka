@@ -4,4 +4,4 @@ metadata:
   name: lsst-voms-proxy-writer
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.vomsRenewal.proxyWriterAccount.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.vomsRenewal.proxyWriterAccount.argoSyncWave }}"

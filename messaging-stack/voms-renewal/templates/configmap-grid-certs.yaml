@@ -4,6 +4,6 @@ metadata:
   name: grid-certs
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.configMaps.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"
 data:
 {{ (.Files.Glob "files/grid-security/certificates/*").AsConfig | indent 2 }}

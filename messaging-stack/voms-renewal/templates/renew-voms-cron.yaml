@@ -4,7 +4,7 @@ metadata:
   name: lsst-renew-voms-proxy
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.vomsRenewal.cron.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.vomsRenewal.cron.argoSyncWave }}"
 spec:
   schedule: {{ .Values.vomsRenewal.cron.schedule }}
   successfulJobsHistoryLimit: {{ .Values.vomsRenewal.cron.successfulJobsHistoryLimit }}
@@ -35,7 +35,7 @@ kind: Job
 metadata:
   name: lsst-renew-voms-proxy-on-install   
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.vomsRenewal.installJob.argoSyncWave }}
+    argocd.argoproj.io/sync-wave: "{{ .Values.vomsRenewal.installJob.argoSyncWave }}"
 
 spec:
   template:
