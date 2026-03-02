@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: butler-config
+  name: butler-config-ccms
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"

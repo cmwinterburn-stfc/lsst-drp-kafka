@@ -4,3 +4,6 @@ ingestd:
     ingestd-config:
       configMap:
         name: ingestd-ccms-config
+    butler-config:
+      configMap:
+        name: butler-config-ccms

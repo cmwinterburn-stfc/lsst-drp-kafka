@@ -4,3 +4,6 @@ ingestd:
     ingestd-config:
       configMap:
         name: ingestd-dp2-prep-config
+    butler-config:
+      configMap:
+        name: butler-config-dc2-prep
