@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: butler-config-hsc_pdr2_multisite
+  name: butler-config-hsc-pdr2-multisite
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "{{ .Values.configMaps.argoSyncWave }}"
