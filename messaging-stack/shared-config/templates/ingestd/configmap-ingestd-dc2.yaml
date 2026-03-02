@@ -15,4 +15,3 @@ data:
     topics:
       RAL_BUTLER_DISK-dc2:
         rucio_prefix: davs://webdav.echo.stfc.ac.uk:1094/lsst:datadisk/butler/repos/panda-test-med-1/
-
