@@ -6,4 +6,4 @@ ingestd:
         name: ingestd-hsc-pdr2-multisite-config
     butler-config:
       configMap:
-        name: butler-config-hsc_pdr2_multisite
+        name: butler-config-hsc-pdr2-multisite
