@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains configuration files and operational settings used to deploy and manage the [LSST Messaging Stack](https://stfc.atlassian.net/wiki/spaces/RO/pages/617054222/Messaging+Stack) for the [LSST Data Reprocessing Pipeline (DRP)](https://stfc.atlassian.net/wiki/spaces/RO/pages/207487345/Data+Reprocessing+Pipeline+DRP), part of the wider [Legacy Survey of Space and Time](https://stfc.atlassian.net/wiki/spaces/RO/pages/1101987874/LSST+Summary) project. These include:
+This repository contains configuration files and operational settings used to deploy and manage the [LSST Messaging Stack](https://stfc.atlassian.net/wiki/spaces/RO/pages/617054222/Messaging+Stack) on Kubernetes for the [LSST Data Reprocessing Pipeline (DRP)](https://stfc.atlassian.net/wiki/spaces/RO/pages/207487345/Data+Reprocessing+Pipeline+DRP), part of the wider [Legacy Survey of Space and Time](https://stfc.atlassian.net/wiki/spaces/RO/pages/1101987874/LSST+Summary) project. These include:
 
 - Apache Kafka 
 - Strimzi Cluster Operator
