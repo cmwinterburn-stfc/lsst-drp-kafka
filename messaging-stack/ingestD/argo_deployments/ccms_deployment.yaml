@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lsst-ingestd-ccms
+  namespace: argocd
+data:
+  controller.diff.server.side: "true"
+spec:
+  destination:
+    name: ''
+    namespace: lsst-drp-kafka
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: messaging-stack/ingestD
+    repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+    targetRevision: main
+    helm:
+      releaseName: ingestd-ccms-helm
+      valueFiles:
+        - values/base.yaml
+        - values/ccms.yaml
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true
