@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lsst-voms-renewal
+  namespace: argocd
+data:
+  controller.diff.server.side: "true"
+spec:
+  destination:
+    name: ''
+    namespace: lsst-drp-kafka
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: messaging-stack/voms-renewal
+    repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+    targetRevision: main
+    helm:
+      releaseName: lsst-voms-renewal-helm
+      valueFiles:
+        - values.yaml
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences:
+    - group: batch
+      kind: CronJob
+      jsonPointers:
+        - /status
+        - /spec/podReplacementPolicy
+    - group: batch
+      kind: Job 
+      jsonPointers:
+        - /status
+        - /spec/podReplacementPolicy

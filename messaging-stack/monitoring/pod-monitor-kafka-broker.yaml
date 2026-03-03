@@ -1,3 +1,5 @@
+# PodMonitor resource to monitor Kafka Broker pods using Prometheus. 
+# This configuration allows Prometheus to scrape metrics from the Kafka Broker application.
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:

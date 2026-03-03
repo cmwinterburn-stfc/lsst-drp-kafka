@@ -1,3 +1,6 @@
+# Kafka Bridge resource definition for Strimzi. 
+# This configuration defines the Kafka Bridge component of the Strimzi Kafka cluster, 
+# providing a REST API for producing and consuming messages to and from Kafka topics.
 apiVersion: kafka.strimzi.io/v1
 kind: KafkaBridge
 metadata:

@@ -1,3 +1,6 @@
+# Kafka Mirror Maker 2 resource definition for Strimzi. 
+# This configuration defines the Kafka Mirror Maker 2 component of the Strimzi Kafka cluster, responsible for replicating data between Kafka clusters. 
+# It specifies the target cluster configuration, source clusters to mirror from, and the metrics configuration for monitoring the Mirror Maker 2 application.
 apiVersion: kafka.strimzi.io/v1
 kind: KafkaMirrorMaker2
 metadata:

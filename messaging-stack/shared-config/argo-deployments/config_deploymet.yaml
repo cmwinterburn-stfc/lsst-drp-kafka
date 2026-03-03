@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lsst-shared-config
+  namespace: argocd
+data:
+  controller.diff.server.side: "true"
+spec:
+  destination:
+    name: ''
+    namespace: lsst-drp-kafka
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: messaging-stack/shared-config
+    repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+    targetRevision: main
+    helm:
+      releaseName: shared-config-helm
+      valueFiles:
+        - values.yaml
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,3 +1,8 @@
+# Kafka cluster resource definitions for Strimzi. 
+# These configurations define the KafkaNodePool for both controller and broker roles, as well as the main Kafka resource for the Strimzi Kafka cluster. 
+# The KafkaNodePool resources specify the number of replicas, roles, and storage configurations for the Kafka cluster nodes.
+# The Kafka resource defines the overall cluster configuration, including listeners, topic replication factors, and metrics configuration.
+
 apiVersion: kafka.strimzi.io/v1
 kind: KafkaNodePool
 metadata:

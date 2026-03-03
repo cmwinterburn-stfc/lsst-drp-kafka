@@ -1,3 +1,5 @@
+# CronJob resource for renewing VOMS proxy credentials on a scheduled basis, 
+# and a Job resource for performing the renewal upon installation.
 apiVersion: batch/v1
 kind: CronJob
 metadata:

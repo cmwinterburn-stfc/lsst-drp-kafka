@@ -1,3 +1,5 @@
+# ServiceAccount resource dedicated to LSST VOMS Proxy Writer.
+# Permissions for this account are elevated to allow writing secrets in the LSST namespace, which is necessary for managing VOMS proxy credentials.
 apiVersion: v1
 kind: ServiceAccount
 metadata:

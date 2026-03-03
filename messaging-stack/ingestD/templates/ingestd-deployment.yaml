@@ -18,6 +18,7 @@ spec:
         app: {{ .Values.ingestd.spec.template.metadata.labels.app }}
 
     spec:
+    #Initialise the init container to prepare the Butler DB auth file with correct permissions before the main container starts
       initContainers:
         - name: {{ .Values.ingestd.initContainer.name }}
           image: {{ .Values.ingestd.initContainer.image }}  

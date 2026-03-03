@@ -75,14 +75,14 @@ mirrormaker2:
         offsetSyncsTopicReplicationFactor: 1
         syncTopicAclsEnabled: "false"
         refreshTopicsIntervalSeconds: 600
-        replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
+        replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy" # Removes prefix from topic names in replicated cluster.
     checkpointConnector:
       tasksMax: 1
       config:
         checkpointsTopicReplicationFactor: -1
         syncGroupOffsetsEnabled: "false"
         refreshGroupsIntervalSeconds: 600
-        replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy"
+        replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy" # Removes prefix from topic names in replicated cluster.
     topicsPattern: "RAL_.*"
     groupsPattern: ".*"
   metricsConfig:

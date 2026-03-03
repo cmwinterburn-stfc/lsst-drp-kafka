@@ -1,3 +1,5 @@
+# PodMonitor resource to monitor Kafka Exporter pods using Prometheus. 
+# This configuration allows Prometheus to scrape metrics from the Kafka Exporter application.
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
