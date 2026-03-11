@@ -23,6 +23,7 @@ kafka:
     transactionMinISR: 2
     defaultReplicationFactor: 3
     minInSyncReplicas: 2
+    logRetentionHours: 672 # 28 days
 
   nodepool:
     controller:

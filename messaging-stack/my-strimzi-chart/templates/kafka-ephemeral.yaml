@@ -65,6 +65,7 @@ spec:
       transaction.state.log.min.isr: {{ .Values.kafka.config.transactionMinISR }}
       default.replication.factor: {{ .Values.kafka.config.defaultReplicationFactor }}
       min.insync.replicas: {{ .Values.kafka.config.minInSyncReplicas }}
+      log.retention.hours: {{ .Values.kafka.config.logRetentionHours }}
     metricsConfig:
       type: {{ .Values.kafka.metricsConfig.type }}
   kafkaExporter:

@@ -48,7 +48,7 @@ ingress:
   path: /
   pathType: Prefix
   hosts: 
-    - kafdrop.local
+    - kafdrop.lsst
   tls: []
 
 resources:
