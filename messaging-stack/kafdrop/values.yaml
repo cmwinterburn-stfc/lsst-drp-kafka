@@ -6,7 +6,7 @@ image:
   pullPolicy: Always
 
 kafka:
-  brokerConnect: localhost:9092
+  brokerConnect: my-cluster-kafka-bootstrap.lsst-drp-kafka.svc:9092
   properties: ""
   truststore: ""
   keystore: ""
