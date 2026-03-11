@@ -47,7 +47,7 @@ ingress:
   ingressClassName: nginx
   path: /
   pathType: Prefix
-  hosts: []
+  hosts: ""
   tls: []
 
 resources:
