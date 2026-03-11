@@ -41,13 +41,14 @@ service:
   nodePort: 30900
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
   apiVersion: ~
   ingressClassName: nginx
   path: /
   pathType: Prefix
-  hosts: []
+  hosts: 
+    - kafdrop.lsst
   tls: []
 
 resources:
