@@ -47,8 +47,7 @@ ingress:
   ingressClassName: nginx
   path: /
   pathType: Prefix
-  hosts: 
-    - kafdrop.lsst
+  hosts: []
   tls: []
 
 resources:
