@@ -34,7 +34,7 @@ spec:
               echo "Done."
 
               echo "Preparing X.509 proxy..."
-              cp /proxy-src/x509up /work/x509up
+              cp /proxy-src/x509up_u99 /work/x509up
               chown 1000:1000 /work/x509up
               chmod 400 /work/x509up
               ls -l /work/x509up
