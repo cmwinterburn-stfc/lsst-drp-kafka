@@ -23,6 +23,9 @@ ingestd:
         readOnly: true
       - name: dbauth-work
         mountPath: /work
+      - name: shortproxy-lsst
+        mountPath: /proxy-src
+        readOnly: true
 
   container:
     name: ingestd
@@ -41,16 +44,12 @@ ingestd:
       - name: LSST_HTTP_CACERT_BUNDLE
         value: /etc/grid-security/certificates/
       - name: LSST_HTTP_AUTH_CLIENT_KEY
-        value: /tmp/x509up_u99
+        value: /work/x509up
       - name: LSST_HTTP_AUTH_CLIENT_CERT
-        value: /tmp/x509up_u99
+        value: /work/x509up
       - name: LSST_RESOURCES_WEBDAV_CONFIG
         value: /etc/webdav.config
     volumeMounts:
-      - name: shortproxy-lsst
-        mountPath: /tmp/x509up_u99
-        subPath: x509up_u99
-        readOnly: true
       - name: grid-certs
         mountPath: /etc/grid-security/certificates
         readOnly: true
@@ -78,6 +77,7 @@ ingestd:
     shortproxy-lsst:
       secret:
         secretName: shortproxy-lsst
+        defaultMode: 0600
     butler-secret:
       secret:
         secretName: butler-access
