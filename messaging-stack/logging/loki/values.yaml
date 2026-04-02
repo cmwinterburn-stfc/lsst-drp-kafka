@@ -1,4 +1,9 @@
 loki:
+
+  auth_enabled: false
+  server:
+    http_listen_port: 3100
+
   commonConfig:
     replication_factor: 1
   schemaConfig:
