@@ -23,6 +23,19 @@ ruler:
     local:
       directory: /var/loki
 
+
+  storage:
+    type: filesystem
+    bucketNames:
+      chunks: loki-chunks
+      ruler: loki-ruler
+      admin: loki-admin
+
+    filesystem:
+      chunks_directory: /var/loki/chunks
+      rules_directory: /var/loki/rules
+      index_directory: /var/loki/index
+
 minio:
   enabled: false
       
