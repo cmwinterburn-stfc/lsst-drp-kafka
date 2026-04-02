@@ -32,6 +32,9 @@ loki:
         rules_directory: /var/loki/rules
         index_directory: /var/loki/index
 
+  gateway:
+    enabled: false
+
   ruler:
     enabled: true
     enable_api: true
