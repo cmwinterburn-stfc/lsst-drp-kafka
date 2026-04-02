@@ -1,82 +1,82 @@
 loki:  
+
   loki:
+    auth_enabled: false
+    server:
+      http_listen_port: 3100
 
-  auth_enabled: false
-  server:
-    http_listen_port: 3100
+    commonConfig:
+      replication_factor: 1
+    schemaConfig:
+      configs:
+        - from: "2024-04-01"
+          store: tsdb
+          object_store: filesystem
+          schema: v13
+          index:
+            prefix: loki_index_
+            period: 24h
+    pattern_ingester:
+        enabled: true
+    limits_config:
+      allow_structured_metadata: true
+      volume_enabled: true
+    storage:
+      type: filesystem
+      bucketNames:
+        chunks: loki-chunks
+        ruler: loki-ruler
+        admin: loki-admin
+      filesystem:
+        chunks_directory: /var/loki/chunks
+        rules_directory: /var/loki/rules
+        index_directory: /var/loki/index
 
-  commonConfig:
-    replication_factor: 1
-  schemaConfig:
-    configs:
-      - from: "2024-04-01"
-        store: tsdb
-        object_store: filesystem
-        schema: v13
-        index:
-          prefix: loki_index_
-          period: 24h
-  pattern_ingester:
-      enabled: true
-  limits_config:
-    allow_structured_metadata: true
-    volume_enabled: true
-  storage:
-    type: filesystem
-    bucketNames:
-      chunks: loki-chunks
-      ruler: loki-ruler
-      admin: loki-admin
-    filesystem:
-      chunks_directory: /var/loki/chunks
-      rules_directory: /var/loki/rules
-      index_directory: /var/loki/index
-ruler:
-  enabled: true
-  enable_api: true
-  storage:
-    type: local
-    local:
-      directory: /var/loki
-
-
-minio:
-  enabled: false
-      
-deploymentMode: SingleBinary
-
-singleBinary:
-  persistence:
+  ruler:
     enabled: true
-    storageClass: longhorn
-    size: 10Gi
-  replicas: 1
+    enable_api: true
+    storage:
+      type: local
+      local:
+        directory: /var/loki
 
-# Zero out replica counts of other deployment modes
-backend:
-  replicas: 0
-read:
-  replicas: 0
-write:
-  replicas: 0
+  minio:
+    enabled: false
+        
+  deploymentMode: SingleBinary
 
-ingester:
-  replicas: 0
-querier:
-  replicas: 0
-queryFrontend:
-  replicas: 0
-queryScheduler:
-  replicas: 0
-distributor:
-  replicas: 0
-compactor:
-  replicas: 0
-indexGateway:
-  replicas: 0
-bloomPlanner:
-  replicas: 0
-bloomBuilder:
-  replicas: 0
-bloomGateway:
-  replicas: 0
+  singleBinary:
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      size: 10Gi
+    replicas: 1
+
+  # Zero out replica counts of other deployment modes
+  backend:
+    replicas: 0
+  read:
+    replicas: 0
+  write:
+    replicas: 0
+
+  ingester:
+    replicas: 0
+  querier:
+    replicas: 0
+  queryFrontend:
+    replicas: 0
+  queryScheduler:
+    replicas: 0
+  distributor:
+    replicas: 0
+  compactor:
+    replicas: 0
+  indexGateway:
+    replicas: 0
+  bloomPlanner:
+    replicas: 0
+  bloomBuilder:
+    replicas: 0
+  bloomGateway:
+    replicas: 0
