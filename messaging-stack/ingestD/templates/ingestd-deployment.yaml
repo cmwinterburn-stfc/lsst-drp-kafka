@@ -54,7 +54,7 @@ spec:
           runAsGroup: {{ .Values.ingestd.container.securityContext.runAsGroup }}
         env:
 {{ toYaml .Values.ingestd.container.env | indent 12 }}
-          volumeMounts:
+        volumeMounts:
 {{toYaml .Values.ingestd.container.volumeMounts | indent 12 }}
 
       - name: {{ .Values.ingestd.sidecarContainer.name }}
