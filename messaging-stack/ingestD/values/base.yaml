@@ -26,9 +26,17 @@ ingestd:
         readOnly: true
       - name: dbauth-work
         mountPath: /work
+
+  sidecarContainer:
+    name: proxy-sync
+    image: busybox:1.36
+    volumeMounts:
       - name: shortproxy-lsst
         mountPath: /proxy-src
         readOnly: true
+      - name: dbauth-work
+        mountPath: /work
+        readOnly: false
 
   container:
     name: ingestd
