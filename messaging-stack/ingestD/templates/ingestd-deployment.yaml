@@ -37,6 +37,7 @@ spec:
                 exit 1
               fi
               cp /secret-src/db-auth.yaml /work/db-auth.tmp
+              chown 1000:1000 /work/db-auth.tmp
               chmod 600 /work/db-auth.tmp
               mv /work/db-auth.tmp /work/db-auth.yaml
               log "Butler DB auth file prepared successfully"
@@ -84,6 +85,7 @@ spec:
                 exit 1
               fi
               cp /proxy-src/proxy /work/x509up.tmp
+              chown 1000:1000 /work/x509up.tmp
               chmod 600 /work/x509up.tmp
               mv /work/x509up.tmp /work/x509up
               log "Proxy synced successfully"
