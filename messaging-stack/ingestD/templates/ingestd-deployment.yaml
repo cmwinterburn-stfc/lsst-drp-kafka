@@ -56,6 +56,15 @@ spec:
 {{ toYaml .Values.ingestd.container.env | indent 12 }}
         volumeMounts:
 {{toYaml .Values.ingestd.container.volumeMounts | indent 12 }}
+        # Use a startup probe to wait for the DB auth file to be ready before starting the main container
+        startupProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - test -f /work/db-auth.yaml
+          failureThreshold: 60
+          periodSeconds: 1
 
       - name: {{ .Values.ingestd.sidecarContainer.name }}
         image: {{ .Values.ingestd.sidecarContainer.image }}
