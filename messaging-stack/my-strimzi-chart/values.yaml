@@ -79,6 +79,7 @@ mirrormaker2:
         refreshTopicsIntervalSeconds: 600
         replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy" # Removes prefix from topic names in replicated cluster.
         configPropertiesExclude: "retention.ms,retention.bytes"
+        syncTopicConfigsEnabled: "false"
     checkpointConnector:
       tasksMax: 1
       config:
