@@ -89,7 +89,7 @@ spec:
               chmod 600 /work/x509up.tmp
               mv /work/x509up.tmp /work/x509up
               log "Proxy synced successfully"
-              sleep 300
+              sleep 21600 # Sleep for 6 hours before next sync
             done
         volumeMounts: 
 {{ .Values.ingestd.sidecarContainer.volumeMounts | toYaml | indent 12 }}
