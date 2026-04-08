@@ -23,7 +23,8 @@ kafka:
     transactionMinISR: 2
     defaultReplicationFactor: 3
     minInSyncReplicas: 2
-    logRetentionHours: 672 # 28 days
+    logRetentionMs: 1209600000 # 14 days
+    logRetebtionBytes: -1 # Unlimited
 
   nodepool:
     controller:
@@ -77,6 +78,7 @@ mirrormaker2:
         syncTopicAclsEnabled: "false"
         refreshTopicsIntervalSeconds: 600
         replicationPolicyClass: "org.apache.kafka.connect.mirror.IdentityReplicationPolicy" # Removes prefix from topic names in replicated cluster.
+        configPropertiesExclude: "retention.ms,retention.bytes"
     checkpointConnector:
       tasksMax: 1
       config:
