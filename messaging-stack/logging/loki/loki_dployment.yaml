@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    #Source 1: Loki helm repo
+    - repoURL: 'https://grafana.github.io/helm-charts'
+      chart: loki
+      targetRevision: "6.16.0"
+      helm:
+        releaseName: loki
+        valueFiles:
+          - $values/messaging-stack/logging/loki/values.yaml
+
+    #Source2: My Git reop containing custom config values
+    - repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: logging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
