@@ -35,7 +35,7 @@ loki:
   gateway:
     enabled: true
     nginx:
-      resolver: rke2-coredns-rke2-coredns.kube-system.sv
+      resolver: rke2-coredns-rke2-coredns.kube-system.svc
 
 
   ruler:
