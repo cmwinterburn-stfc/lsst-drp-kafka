@@ -5,18 +5,20 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
+  sources:
     # Official Grafana Helm charts repo
-    repoURL: https://grafana.github.io/helm-charts
-    chart: promtail
-    targetRevision: 6.17.1
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: promtail
+      targetRevision: 6.17.1
+      helm:
+        releaseName: promtail
+        valueFiles:
+          - $values/messaging-stack/logging/promtail/values.yaml
 
-    path: charts/promtail
-
-    helm:
-      valueFiles:
-        - values.yaml
-
+    - repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+      targetRevision: main
+      ref: values
+      
   destination:
     server: https://kubernetes.default.svc
     namespace: logging
