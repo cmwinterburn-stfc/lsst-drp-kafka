@@ -32,10 +32,6 @@ loki:
         rules_directory: /var/loki/rules
         index_directory: /var/loki/index
 
-  gateway:
-    enabled: true
-    nginx:
-
   global:
     dnsNamespace: kube-system
     clusterDomain: cluster.local
