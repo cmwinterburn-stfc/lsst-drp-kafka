@@ -35,8 +35,11 @@ loki:
   gateway:
     enabled: true
     nginx:
-      resolver: rke2-coredns-rke2-coredns.kube-system.svc
 
+  global:
+    dnsNamespace: kube-system
+    clusterDomain: cluster.local
+    dnsService: rke2-coredns-rke2-coredns
 
   ruler:
     enabled: true
