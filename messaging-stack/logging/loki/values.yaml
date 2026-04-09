@@ -33,7 +33,7 @@ loki:
         index_directory: /var/loki/index
 
   gateway:
-    enabled: false
+    enabled: true
 
   ruler:
     enabled: true
