@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: lsst-strimzi-messaging-stack
   namespace: argocd
-data:
-  controller.diff.server.side: "true"
 spec:
   project: default
   source:
