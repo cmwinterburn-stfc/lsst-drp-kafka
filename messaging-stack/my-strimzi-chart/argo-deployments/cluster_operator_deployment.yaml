@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: lsst-strimzi-messaging-stack
+  name: strimzi-cluster-operator
   namespace: argocd
 spec:
   project: default
