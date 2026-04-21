@@ -1,14 +1,22 @@
-project: default
-source:
-  repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
-  path: messaging-stack/my-strimzi-chart
-  targetRevision: main
-  helm:
-    releaseName: strimzi
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: lsst-drp-kafka
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lsst-strimzi-messaging-stack
+  namespace: argocd
+data:
+  controller.diff.server.side: "true"
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+    path: messaging-stack/my-strimzi-chart
+    targetRevision: main
+    helm:
+      releaseName: strimzi
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: lsst-drp-kafka
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
