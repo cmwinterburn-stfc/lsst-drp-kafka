@@ -3,6 +3,9 @@ kind: StorageClass
 metadata:
   name: longhorn-strimzi
 provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
 parameters:
   numberOfReplicas: "1"
   staleReplicaTimeout: "30"
