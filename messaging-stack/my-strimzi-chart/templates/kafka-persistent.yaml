@@ -18,6 +18,7 @@ spec:
     type: {{ .Values.kafka.nodepool.controller.storage.type }}
     volumes:
       - id: {{ .Values.kafka.nodepool.controller.storage.volumes.id }}
+        class: {{ .Values.kafka.nodepool.controller.storage.volumes.class }}
         type: {{ .Values.kafka.nodepool.controller.storage.volumes.type }}
         size: {{ .Values.kafka.nodepool.controller.storage.volumes.size }}
         kraftMetadata: {{ .Values.kafka.nodepool.controller.storage.volumes.kraftMetadata }}
@@ -39,6 +40,7 @@ spec:
     type: {{ .Values.kafka.nodepool.broker.storage.type }}
     volumes:
       - id: {{ .Values.kafka.nodepool.broker.storage.volumes.id }}
+        class: {{ .Values.kafka.nodepool.broker.storage.volumes.class }}
         type: {{ .Values.kafka.nodepool.broker.storage.volumes.type }}
         size: {{ .Values.kafka.nodepool.broker.storage.volumes.size }}
         kraftMetadata: {{ .Values.kafka.nodepool.broker.storage.volumes.kraftMetadata }}
