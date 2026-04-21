@@ -35,8 +35,10 @@ kafka:
         type: jbod
         volumes:
           id: 0
-          type: ephemeral
+          type: persistent-claim
+          size: 10Gi
           kraftMetadata: shared
+          deleteClaim: false
     broker:
       name: broker
       replicas: 3
@@ -45,8 +47,10 @@ kafka:
         type: jbod
         volumes:
           id: 0
-          type: ephemeral
+          type: persistent-claim
+          size: 10Gi
           kraftMetadata: shared
+          deleteClaim: false
   
   metricsConfig:
     type: strimziMetricsReporter
