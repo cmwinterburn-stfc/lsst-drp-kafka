@@ -1,22 +1,16 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: strimzi-cluster-operator
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: 'https://strimzi.io/charts/'
-    targetRevision: 0.49.1
-    helm:
-      releaseName: strimzi-cluster-operator
-    chart: strimzi-kafka-operator
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: lsst-drp-kafka
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+project: default
+source:
+  repoURL: 'https://strimzi.io/charts/'
+  targetRevision: 0.49.1
+  helm:
+    releaseName: strimzi-cluster-operator
+  chart: strimzi-kafka-operator
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: lsst-drp-kafka
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
