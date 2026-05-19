@@ -24,7 +24,7 @@ kafka:
     defaultReplicationFactor: 3
     minInSyncReplicas: 2
     logRetentionMs: 1209600000 # 14 days
-    logRetebtionBytes: -1 # Unlimited
+    logRetentionBytes: -1 # Unlimited
 
   nodepool:
     controller:

@@ -19,7 +19,11 @@ spec:
     volumes:
       - id: {{ .Values.kafka.nodepool.controller.storage.volumes.id }}
         type: {{ .Values.kafka.nodepool.controller.storage.volumes.type }}
+        class: {{ .Values.kafka.nodepool.controller.storage.volumes.class }}
+        size: {{ .Values.kafka.nodepool.controller.storage.volumes.size }}
+        deleteClaim: {{ .Values.kafka.nodepool.controller.storage.volumes.deleteClaim }}
         kraftMetadata: {{ .Values.kafka.nodepool.controller.storage.volumes.kraftMetadata }}
+
 
 ---
 
@@ -39,6 +43,9 @@ spec:
     volumes:
       - id: {{ .Values.kafka.nodepool.broker.storage.volumes.id }}
         type: {{ .Values.kafka.nodepool.broker.storage.volumes.type }}
+        class: {{ .Values.kafka.nodepool.broker.storage.volumes.class }}
+        size: {{ .Values.kafka.nodepool.broker.storage.volumes.size }}
+        deleteClaim: {{ .Values.kafka.nodepool.broker.storage.volumes.deleteClaim }}
         kraftMetadata: {{ .Values.kafka.nodepool.broker.storage.volumes.kraftMetadata }}
 
 ---
