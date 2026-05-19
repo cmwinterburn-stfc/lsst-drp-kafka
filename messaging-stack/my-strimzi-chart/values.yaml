@@ -34,12 +34,12 @@ kafka:
       storage:
         type: jbod
         volumes:
-          - id: 0
-            type: persistent-claim
-            class: longhorn-strimzi
-            size: 10Gi
-            kraftMetadata: shared
-            deleteClaim: false
+          id: 0
+          type: persistent-claim
+          class: longhorn-strimzi
+          size: 10Gi
+          kraftMetadata: shared
+          deleteClaim: false
     broker:
       name: broker
       replicas: 3
@@ -47,12 +47,12 @@ kafka:
       storage:
         type: jbod
         volumes:
-          - id: 0
-            type: persistent-claim
-            class: longhorn-strimzi
-            size: 10Gi
-            kraftMetadata: shared
-            deleteClaim: false
+          id: 0
+          type: persistent-claim
+          class: longhorn-strimzi
+          size: 10Gi
+          kraftMetadata: shared
+          deleteClaim: false
   
   metricsConfig:
     type: strimziMetricsReporter
