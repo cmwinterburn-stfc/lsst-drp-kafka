@@ -29,7 +29,7 @@ kafka:
   nodepool:
     controller:
       name: controller
-      replicas: 3
+      replicas: 0
       roles: controller
       storage:
         type: jbod
@@ -42,7 +42,7 @@ kafka:
           deleteClaim: false
     broker:
       name: broker
-      replicas: 3
+      replicas: 0
       roles: broker
       storage:
         type: jbod
