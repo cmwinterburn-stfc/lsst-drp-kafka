@@ -50,6 +50,12 @@ spec:
         - name: renew-voms-init
           image: {{ .Values.vomsRenewal.image.repository }}:{{ .Values.vomsRenewal.image.tag }}
           imagePullPolicy: {{ .Values.vomsRenewal.image.pullPolicy }}
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Starting debug mode..."
+              sleep infinity
           volumeMounts:
 {{ .Values.vomsRenewal.secretMounts | toYaml | indent 16 }}
       volumes:
