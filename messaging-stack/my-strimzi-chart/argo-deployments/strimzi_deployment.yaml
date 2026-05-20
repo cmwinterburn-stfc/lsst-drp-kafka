@@ -18,3 +18,9 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - RespectIgnoreDifferences=true   # 👈 important
+  ignoreDifferences:
+    - group: ""
+      kind: PersistentVolumeClaim
+      namespace: lsst-drp-kafka
