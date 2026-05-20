@@ -11,6 +11,12 @@ vomsRenewal:
     ttlSecondsAfterFinished: 43200 # 12 hours
 
   installJob:
+    command:
+      - /bin/bash
+      - -c
+      - |
+        echo "Starting debug mode..."
+        sleep infinity
     argoSyncWave: "1"
     restartPolicy: OnFailure
     serviceAccountName: lsst-voms-proxy-writer
