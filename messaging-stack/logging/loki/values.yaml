@@ -60,7 +60,7 @@ singleBinary:
   persistence:
     enabled: true
     storageClass: longhorn
-    size: 10Gi
+    size: 15Gi
   replicas: 1
 
 backend:
