@@ -73,7 +73,6 @@ spec:
       default.replication.factor: {{ .Values.kafka.config.defaultReplicationFactor }}
       min.insync.replicas: {{ .Values.kafka.config.minInSyncReplicas }}
       log.retention.ms: {{ .Values.kafka.config.logRetentionMs }}
-      log.retention.bytes: {{ .Values.kafka.config.logRetebtionBytes }}
     metricsConfig:
       type: {{ .Values.kafka.metricsConfig.type }}
   kafkaExporter:
