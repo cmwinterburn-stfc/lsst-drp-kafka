@@ -16,6 +16,7 @@ loki:
           prefix: loki_index_
           period: 24h
   compactor:
+    enabled: true
     working_directory: /var/loki/compactor
     compaction_interval: 10m
     retention_enabled: true
@@ -25,7 +26,7 @@ loki:
   limits_config:
     allow_structured_metadata: true
     volume_enabled: true
-    retention_period: 336h
+    retention_period: 168h
   storage:
     type: filesystem
     bucketNames:
@@ -59,6 +60,33 @@ singleBinary:
   persistence:
     enabled: true
     storageClass: longhorn
-    size: 20Gi
+    size: z10Gi
   replicas: 1
 
+backend:
+  replicas: 0
+read:
+  replicas: 0
+write:
+  replicas: 0
+
+ingester:
+  replicas: 0
+querier:
+  replicas: 0
+queryFrontend:
+  replicas: 0
+queryScheduler:
+  replicas: 0
+distributor:
+  replicas: 0
+compactor:
+  replicas: 0
+indexGateway:
+  replicas: 0
+bloomPlanner:
+  replicas: 0
+bloomBuilder:
+  replicas: 0
+bloomGateway:
+  replicas: 0
