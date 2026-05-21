@@ -16,7 +16,6 @@ loki:
           prefix: loki_index_
           period: 24h
   compactor:
-    enabled: true
     working_directory: /var/loki/compactor
     compaction_interval: 10m
     retention_enabled: true
