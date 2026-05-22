@@ -3,3 +3,6 @@
 values-secret.yaml
 *.log
 *.tmp
+messaging-stack/voms-renewal/long-proxy
+messaging-stack/voms-renewal/harbor-lsst-prod
+messaging-stack/ingestD/db-auth.yaml

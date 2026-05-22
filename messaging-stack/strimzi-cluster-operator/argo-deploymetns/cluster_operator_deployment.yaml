@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://strimzi.io/charts/'
-    targetRevision: 0.49.1
+    repoURL: 'https://github.com/cmwinterburn-stfc/lsst-drp-kafka.git'
+    targetRevision: HEAD 
+    path: messaging-stack/strimzi-cluster-operator
     helm:
       releaseName: strimzi-cluster-operator
-    chart: strimzi-kafka-operator
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: lsst-drp-kafka

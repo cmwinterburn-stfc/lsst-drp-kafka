@@ -1,3 +1,4 @@
+#Helm override values for promtail
 config:
   clients:
     - url: http://loki-gateway.logging.svc:80/loki/api/v1/push
