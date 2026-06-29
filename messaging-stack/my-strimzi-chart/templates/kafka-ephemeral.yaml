@@ -40,7 +40,7 @@ spec:
     - {{ .Values.kafka.nodepool.broker.roles }}
   storage:
     type: {{ .Values.kafka.nodepool.broker.storage.type }}
-    # volumes:
+    volumes:
       - id: {{ .Values.kafka.nodepool.broker.storage.volumes.id }}
         type: {{ .Values.kafka.nodepool.broker.storage.volumes.type }}
     #     class: {{ .Values.kafka.nodepool.broker.storage.volumes.class }}
