@@ -33,13 +33,13 @@ kafka:
       roles: controller
       storage:
       #Temporarily drop persistent storage
-        type: ephemeral #jbod
-        # volumes:
-        #   id: 0
-        #   type: persistent-claim
+        type: jbod
+        volumes:
+          id: 0
+          type: ephemeral
         #   class: longhorn-strimzi
         #   size: 10Gi
-        #   kraftMetadata: shared
+          kraftMetadata: shared
         #   deleteClaim: false
     broker:
       name: broker
@@ -47,13 +47,13 @@ kafka:
       roles: broker
       storage:
       #Temporarily drop persistent storage
-        type: ephemeral #jbod
-        # volumes:
-        #   id: 0
-        #   type: persistent-claim
+        type: jbod
+        volumes:
+          id: 0
+          type: ephemeral
         #   class: longhorn-strimzi
         #   size: 10Gi
-        #   kraftMetadata: shared
+          kraftMetadata: shared
         #   deleteClaim: false
   
   metricsConfig:
