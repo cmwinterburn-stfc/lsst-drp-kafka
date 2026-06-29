@@ -32,27 +32,29 @@ kafka:
       replicas: 3
       roles: controller
       storage:
-        type: jbod
-        volumes:
-          id: 0
-          type: persistent-claim
-          class: longhorn-strimzi
-          size: 10Gi
-          kraftMetadata: shared
-          deleteClaim: false
+      #Temporarily drop persistent storage
+        type: ephemeral #jbod
+        # volumes:
+        #   id: 0
+        #   type: persistent-claim
+        #   class: longhorn-strimzi
+        #   size: 10Gi
+        #   kraftMetadata: shared
+        #   deleteClaim: false
     broker:
       name: broker
       replicas: 3
       roles: broker
       storage:
-        type: jbod
-        volumes:
-          id: 0
-          type: persistent-claim
-          class: longhorn-strimzi
-          size: 10Gi
-          kraftMetadata: shared
-          deleteClaim: false
+      #Temporarily drop persistent storage
+        type: ephemeral #jbod
+        # volumes:
+        #   id: 0
+        #   type: persistent-claim
+        #   class: longhorn-strimzi
+        #   size: 10Gi
+        #   kraftMetadata: shared
+        #   deleteClaim: false
   
   metricsConfig:
     type: strimziMetricsReporter
