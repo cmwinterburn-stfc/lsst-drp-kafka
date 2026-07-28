@@ -32,6 +32,8 @@ spec:
           sync.topic.acls.enabled: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.syncTopicAclsEnabled }}
           refresh.topics.interval.seconds: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.refreshTopicsIntervalSeconds }}
           replication.policy.class: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.replicationPolicyClass }}
+          config.properties.exclude: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.configPropertiesExclude | quote }}
+          sync.topic.configs.enabled: {{ .Values.mirrormaker2.mirrors.sourceConnector.config.syncTopicConfigsEnabled }}
     checkpointConnector:
         tasksMax: {{ .Values.mirrormaker2.mirrors.checkpointConnector.tasksMax }}
         config:
