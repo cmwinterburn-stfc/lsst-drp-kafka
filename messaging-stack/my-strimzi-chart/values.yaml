@@ -6,6 +6,10 @@ kafka:
   cluster: my-cluster
   version: 4.1.1
   metadataVersion: 4.1-IV1
+  storage:
+    className: longhorn-kafka
+    reclaimPolicy: Retain
+    numberOfReplicas: 1
 
   listeners:
     - name: plain
@@ -33,29 +37,25 @@ kafka:
       replicas: 3
       roles: controller
       storage:
-      #Temporarily drop persistent storage
         type: jbod
         volumes:
           id: 0
-          type: ephemeral
-        #   class: longhorn-strimzi
-        #   size: 10Gi
+          type: persistent-claim
+          size: 10Gi
           kraftMetadata: shared
-        #   deleteClaim: false
+          deleteClaim: false
     broker:
       name: broker
       replicas: 3
       roles: broker
       storage:
-      #Temporarily drop persistent storage
         type: jbod
         volumes:
           id: 0
-          type: ephemeral
-        #   class: longhorn-strimzi
-        #   size: 10Gi
+          type: persistent-claim
+          size: 10Gi
           kraftMetadata: shared
-        #   deleteClaim: false
+          deleteClaim: false
   
   metricsConfig:
     type: strimziMetricsReporter
