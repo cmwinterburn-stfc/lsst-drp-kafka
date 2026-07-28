@@ -25,6 +25,7 @@ kafka:
     minInSyncReplicas: 2
     logRetentionMs: 1209600000 # 14 days
     logRetentionBytes: 1073741824 # 10GiB
+    offsetsRetentionMinutes: 20160 # 14 days, matches log retention
 
   nodepool:
     controller:
