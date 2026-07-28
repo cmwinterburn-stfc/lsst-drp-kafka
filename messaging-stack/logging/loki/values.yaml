@@ -90,3 +90,8 @@ bloomBuilder:
   replicas: 0
 bloomGateway:
   replicas: 0
+
+gateway:
+  enabled: true
+  service:
+    type: NodePort
