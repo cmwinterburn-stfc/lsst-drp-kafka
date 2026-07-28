@@ -19,9 +19,9 @@ spec:
     volumes:
       - id: {{ .Values.kafka.nodepool.controller.storage.volumes.id }}
         type: {{ .Values.kafka.nodepool.controller.storage.volumes.type }}
-    #     class: {{ .Values.kafka.nodepool.controller.storage.volumes.class }}
-    #     size: {{ .Values.kafka.nodepool.controller.storage.volumes.size }}
-    #     deleteClaim: {{ .Values.kafka.nodepool.controller.storage.volumes.deleteClaim }}
+        class: {{ .Values.kafka.storage.className }}
+        size: {{ .Values.kafka.nodepool.controller.storage.volumes.size }}
+        deleteClaim: {{ .Values.kafka.nodepool.controller.storage.volumes.deleteClaim }}
         kraftMetadata: {{ .Values.kafka.nodepool.controller.storage.volumes.kraftMetadata }}
 
 
@@ -31,7 +31,7 @@ apiVersion: kafka.strimzi.io/v1
 kind: KafkaNodePool
 metadata:
   name: {{ .Values.kafka.nodepool.broker.name }}
-  namespace: {{ .Values.kafka.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     strimzi.io/cluster: {{ .Values.kafka.cluster }}
 spec:
@@ -43,9 +43,9 @@ spec:
     volumes:
       - id: {{ .Values.kafka.nodepool.broker.storage.volumes.id }}
         type: {{ .Values.kafka.nodepool.broker.storage.volumes.type }}
-    #     class: {{ .Values.kafka.nodepool.broker.storage.volumes.class }}
-    #     size: {{ .Values.kafka.nodepool.broker.storage.volumes.size }}
-    #     deleteClaim: {{ .Values.kafka.nodepool.broker.storage.volumes.deleteClaim }}
+        class: {{ .Values.kafka.storage.className }}
+        size: {{ .Values.kafka.nodepool.broker.storage.volumes.size }}
+        deleteClaim: {{ .Values.kafka.nodepool.broker.storage.volumes.deleteClaim }}
         kraftMetadata: {{ .Values.kafka.nodepool.broker.storage.volumes.kraftMetadata }}
 
 ---
@@ -54,7 +54,7 @@ apiVersion: kafka.strimzi.io/v1
 kind: Kafka
 metadata:
   name: {{ .Values.kafka.name }}
-  namespace: {{ .Values.kafka.namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   kafka:
     version: {{ .Values.kafka.version }}
