@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ingestd-poller-role
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "{{ .Values.ingestd.pollerRole.argoSyncWave }}"
+rules:
+{{ .Values.ingestd.pollerRole.rules | toYaml | indent 2 }}

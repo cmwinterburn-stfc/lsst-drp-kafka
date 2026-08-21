@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ingestd-poller-role-binding
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "{{ .Values.ingestd.pollerRoleBinding.argoSyncWave }}"
+subjects:
+{{ .Values.ingestd.pollerRoleBinding.subjects | toYaml | indent 2 }}
+roleRef:
+  kind: {{ .Values.ingestd.pollerRoleBinding.roleRef.kind }}
+  name: {{ .Values.ingestd.pollerRoleBinding.roleRef.name }}
+  apiGroup: {{ .Values.ingestd.pollerRoleBinding.roleRef.apiGroup }}

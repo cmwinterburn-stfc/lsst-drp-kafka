@@ -111,3 +111,24 @@ ingestd:
       configMap:
         name: webdav-config
 
+  serviceAccount:
+    argoSyncWave: "0"
+
+  pollerRole:
+    argoSyncWave: "0"
+    rules:
+      - apiGroups: [""]
+        resources: ["pods"]
+        verbs: ["get", "delete"]
+
+  pollerRoleBinding:
+    argoSyncWave: "0"
+    subjects:
+      - kind: ServiceAccount
+        name: ingestd-poller
+        namespace: lsst-drp-kafka
+    roleRef:
+      kind: Role
+      name: ingestd-poller-role
+      apiGroup: rbac.authorization.k8s.io
+
